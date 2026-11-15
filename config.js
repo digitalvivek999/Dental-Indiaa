@@ -14,7 +14,7 @@ const DEFAULT_CONFIG = {
   doctorName: "Dr. S. Lathasree",
   doctorDegrees: "BDS, MDS (Cosmetic Dentistry & Oral Implantology)",
   doctorTitle: "Chief Dental Surgeon & Senior Implantologist",
-  doctorExperienceYears: "12+",
+  doctorExperienceYears: "5+",
   doctorBio: "A healthy, beautiful smile brings lifelong confidence. We provide gentle, ethical, and 100% pain-free dental care equipped with modern digital technology and sterilized hospital-grade hygiene.",
   doctorPhoto: "images/doctor.jpg",
   
