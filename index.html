@@ -1005,78 +1005,14 @@
       .emergency-inner .btn { width: 100%; }
     }
   
-    /* Doctor Intro Video: Show full face without any cropping */
-    #doctorIntroVideo {
+    /* Doctor Video exact styling */
+    .doctor-video {
       width: 100% !important;
-      height: auto !important;
-      max-height: 540px !important;
-      object-fit: contain !important;
-      object-position: center top !important;
-      background: #0F172A !important;
-      border-radius: 16px !important;
+      height: auto !important;          /* fixed height mat do */
+      object-fit: contain !important;   /* poora frame dikhega, kuch nahi katega */
+      background: #000 !important;
       display: block !important;
     }
-
-
-    /* Full Face Video Display (9:16 Tall Portrait) */
-    .doctor-video-frame-wrap {
-      min-height: 580px !important;
-      background: #0F172A !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-    #doctorIntroVideo {
-      width: 100% !important;
-      max-width: 380px !important;
-      height: auto !important;
-      max-height: 620px !important;
-      object-fit: contain !important;
-      border-radius: 14px !important;
-      display: block !important;
-      margin: 0 auto !important;
-    }
-    @media (max-width: 768px) {
-      .doctor-video-frame-wrap {
-        min-height: 480px !important;
-      }
-      #doctorIntroVideo {
-        max-width: 100% !important;
-        max-height: 520px !important;
-      }
-    }
-
-
-    /* Full Vertical 720px Reel Frame */
-    .doctor-video-frame-wrap {
-      width: 100% !important;
-      height: 720px !important;
-      min-height: 720px !important;
-      background: #0B132B !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      border-radius: 20px !important;
-    }
-    #doctorIntroVideo {
-      width: 100% !important;
-      height: 100% !important;
-      max-height: 720px !important;
-      object-fit: contain !important;
-      display: block !important;
-      margin: 0 auto !important;
-      border-radius: 18px !important;
-    }
-    @media (max-width: 768px) {
-      .doctor-video-frame-wrap {
-        height: 560px !important;
-        min-height: 560px !important;
-      }
-      #doctorIntroVideo {
-        max-height: 560px !important;
-      }
-    }
-
 </style>
 
   <!-- Comprehensive Mobile Optimization & Overflow Fix -->
@@ -1888,8 +1824,8 @@
             </div>
 
             <!-- HTML5 Video Player -->
-            <div class="doctor-video-frame-wrap" style="position: relative; border-radius: 20px; overflow: hidden; background: #0B132B; display: flex; justify-content: center; align-items: center; width: 100%; height: 720px; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35); border: 2.5px solid #0D9488;">
-              <video id="doctorIntroVideo" controls playsinline preload="metadata" poster="images/doctor_video_poster.jpg" style="width: 100%; height: 100%; max-height: 720px; object-fit: contain; display: block; margin: 0 auto; border-radius: 18px;">
+            <div style="position: relative; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25); border: 2px solid #0D9488;">
+              <video class="doctor-video" id="doctorIntroVideo" controls playsinline preload="metadata" poster="images/doctor_video_poster.jpg">
                 <source src="images/doctor_intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
