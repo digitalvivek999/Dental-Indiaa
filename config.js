@@ -47,7 +47,7 @@ const DEFAULT_CONFIG = {
   currencySymbol: "₹",
   rctPrice: "₹2,499",
   alignersPrice: "₹34,999",
-  alignersEmi: "₹2,999/mo",
+  999/mo",
   implantsPrice: "₹18,999",
   whiteningPrice: "₹4,499",
   veneersPrice: "₹4,999",
