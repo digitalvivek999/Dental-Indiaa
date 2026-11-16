@@ -668,6 +668,21 @@
     .stars { color: #F59E0B; font-size: 0.85rem; margin-bottom: 12px; }
     .review-text { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; margin-bottom: 18px; flex-grow: 1; }
     .reviewer-info { display: flex; align-items: center; gap: 12px; }
+        .reviewer-avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--teal-primary);
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(13, 148, 136, 0.2);
+    }
+    .reviewer-avatar-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     .reviewer-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--bg-subtle-teal); color: var(--teal-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
     .reviewer-name { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
     .reviewer-tag { font-size: 0.75rem; color: var(--teal-primary); font-weight: 600; }
@@ -1522,6 +1537,7 @@
       </div>
 
       <div class="reviews-grid">
+        <!-- Review 1: Rajesh Kumar G. -->
         <div class="review-card">
           <div class="stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1530,14 +1546,17 @@
             "I had a terrible toothache at night. Visited Dr. Lathasree at KU cross next morning. She did my single-sitting RCT in 45 minutes with zero pain! Very gentle doctor and clean clinic."
           </p>
           <div class="reviewer-info">
-            <div class="reviewer-avatar">RK</div>
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_rajesh.jpg" alt="Rajesh Kumar G. - Verified Patient Hanamkonda">
+            </div>
             <div>
-              <div class="reviewer-name">Rajesh Kumar G.</div>
+              <div class="reviewer-name">Rajesh Kumar G. <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
               <div class="reviewer-tag">KU Cross, Hanamkonda • Painless RCT</div>
             </div>
           </div>
         </div>
 
+        <!-- Review 2: Sowmya Reddy -->
         <div class="review-card">
           <div class="stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1546,14 +1565,17 @@
             "Got two front dental implants done with zirconia crowns. Dr. Lathasree explained the whole process clearly and gave me a lifetime warranty card. I can chew normally again!"
           </p>
           <div class="reviewer-info">
-            <div class="reviewer-avatar">SP</div>
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_sowmya.jpg" alt="Sowmya Reddy - Verified Patient Warangal">
+            </div>
             <div>
-              <div class="reviewer-name">Sowmya Reddy</div>
+              <div class="reviewer-name">Sowmya Reddy <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
               <div class="reviewer-tag">Warangal • Dental Implants</div>
             </div>
           </div>
         </div>
 
+        <!-- Review 3: Vamshi Nayak -->
         <div class="review-card">
           <div class="stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1562,14 +1584,17 @@
             "Completed my Clear Aligners here. No metal brackets, nobody at my college even knew I was wearing braces. And the 0% EMI option made it so affordable for my family."
           </p>
           <div class="reviewer-info">
-            <div class="reviewer-avatar">VN</div>
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_vamshi.jpg" alt="Vamshi Nayak - Verified Patient Kakatiya University">
+            </div>
             <div>
-              <div class="reviewer-name">Vamshi Nayak</div>
+              <div class="reviewer-name">Vamshi Nayak <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
               <div class="reviewer-tag">Kakatiya University Student • Aligners</div>
             </div>
           </div>
         </div>
 
+        <!-- Review 4: Anitha Lakshmi -->
         <div class="review-card">
           <div class="stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1578,9 +1603,11 @@
             "Brought my 7-year-old daughter for cavity treatment. Dr. Lathasree was so patient and friendly that my daughter didn't even cry. Best family dental clinic in Hanamkonda."
           </p>
           <div class="reviewer-info">
-            <div class="reviewer-avatar">AL</div>
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_anitha.jpg" alt="Anitha Lakshmi - Verified Patient Subedari Hanamkonda">
+            </div>
             <div>
-              <div class="reviewer-name">Anitha Lakshmi</div>
+              <div class="reviewer-name">Anitha Lakshmi <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
               <div class="reviewer-tag">Subedari, Hanamkonda • Pediatric Care</div>
             </div>
           </div>
