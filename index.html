@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="medical.clinic">
   <meta property="og:title" content="Dr. S. Lathasree Dental Clinic & Implant Center | Hanamkonda">
-  <meta property="og:description" content="100% Pain-Free Dental Care, German Implants with Lifetime Warranty, and Clear Aligners at KU Cross, Hanamkonda.">
+  <meta property="og:description" content="Gentle & Painless Dental Care, German Implants with Lifetime Warranty, and Clear Aligners at KU Cross, Hanamkonda.">
   <meta property="og:url" content="https://dental-indiaa.netlify.app/">
   <meta property="og:site_name" content="Dr. S. Lathasree Dental Clinic">
   <meta property="og:image" content="images/doctor.jpg">
@@ -180,7 +180,15 @@
     body { background-color: var(--bg-main); color: var(--text-body); font-family: var(--font-body); line-height: 1.65; overflow-x: hidden; }
 
     .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-    section { padding: 85px 0; position: relative; }
+    section { padding: 55px 0; position: relative; }
+    p, .treatment-desc, .review-text, .faq-answer, .process-desc, .blog-excerpt {
+      font-size: 0.98rem !important; /* ~15.7px for optimal readability */
+      line-height: 1.65;
+    }
+    .treatment-features li {
+      font-size: 0.9rem !important;
+    }
+    .section-head { margin-bottom: 38px; }
 
     /* Badges & Headers */
     .pill-badge {
@@ -829,7 +837,7 @@
     .footer-links li { margin-bottom: 10px; }
     .footer-links a { color: #94A3B8; text-decoration: none; font-size: 0.88rem; transition: var(--transition); }
     .footer-links a:hover { color: #14B8A6; }
-    .copyright-bar { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: #64748B; flex-wrap: wrap; gap: 10px; }
+    .copyright-bar { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: #94A3B8; flex-wrap: wrap; gap: 10px; }
 
     /* Floating WhatsApp Button */
     .floating-wa-btn {
@@ -961,20 +969,16 @@
   <!-- Top Utility Header with Language Switcher -->
   <div class="utility-header">
     <div class="container utility-inner">
-      <ul class="utility-list">
-        <li><i class="fa-solid fa-location-dot"></i> <span data-config="address">5-11-532, Sri Sai Nilayam, Road No. 2B, KU Cross</span>, <span data-config="city">Hanamkonda</span></li>
-        <li><i class="fa-regular fa-clock"></i> <span data-config="opdTimings">Mon-Sat: 10:00 AM - 8:30 PM | Sun: By Appointment</span></li>
-      </ul>
-      <ul class="utility-list">
-        <li><i class="fa-solid fa-shield-halved"></i> 100% NABH Sterilization</li>
-        <li>
-          <button class="lang-switcher" onclick="toggleLanguage()" title="Switch Language / भाषा बदलें">
-            <i class="fa-solid fa-globe"></i>
-            <span id="langBtnText">English / हिन्दी</span>
-          </button>
-        </li>
-        <li><a href="tel:+919347594646" data-config-href="phoneLink" style="color: #FFFFFF; font-weight: 700; text-decoration: none;"><i class="fa-solid fa-phone"></i> <span data-config="phone">+91 93475 94646</span></a></li>
-      </ul>
+      <div class="utility-list">
+        <span><i class="fa-regular fa-clock"></i> <span data-config="opdTimings">Mon-Sat: 10:00 AM - 8:30 PM | Sun: By Appointment</span></span>
+      </div>
+      <div class="utility-list">
+        <button class="lang-switcher" onclick="toggleLanguage()" title="Switch Language / भाषा बदलें">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langBtnText">English / हिन्दी</span>
+        </button>
+        <a href="tel:+919347594646" data-config-href="phoneLink" style="color: #FFFFFF; font-weight: 700; text-decoration: none;"><i class="fa-solid fa-phone"></i> <span data-config="phone">+91 93475 94646</span></a>
+      </div>
     </div>
   </div>
 
@@ -1002,11 +1006,7 @@
       </ul>
 
       <div style="display: flex; gap: 12px; align-items: center;">
-        <a href="https://wa.me/919347594646" data-config-href="whatsappLink" target="_blank" class="btn btn-whatsapp" style="padding: 10px 18px; font-size: 0.88rem;">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>WhatsApp OPD</span>
-        </a>
-        <a href="#booking" class="btn btn-teal" style="padding: 10px 22px; font-size: 0.88rem;">
+        <a href="#booking" class="btn btn-teal" style="padding: 10px 24px; font-size: 0.9rem;">
           <i class="fa-solid fa-calendar-check"></i>
           <span>Book Visit</span>
         </a>
@@ -1044,7 +1044,7 @@
           </div>
           <h1 class="hero-title" id="heroHeadline">
             Smile with Confidence. <br>
-            <span class="highlight">100% Pain-Free</span> & Precision Dental Care.
+            <span class="highlight">Gentle & Painless</span> & Precision Dental Care.
           </h1>
           <p class="hero-desc" id="heroSubDesc">
             Single-sitting Painless Root Canal (RCT), German Dental Implants with Lifetime Warranty, and Invisible Aligners. Experience gentle, transparent, and ethical dental excellence by senior MDS specialists.
@@ -1071,7 +1071,7 @@
             </div>
             <div class="trust-bullet-item">
               <div class="trust-bullet-icon"><i class="fa-solid fa-shield-virus"></i></div>
-              <div class="trust-bullet-text">100% Autoclave Sterile Hygiene</div>
+              <div class="trust-bullet-text">Class B Autoclave Sterile Hygiene</div>
             </div>
           </div>
         </div>
@@ -1268,7 +1268,7 @@
             </ul>
             <div class="treatment-footer">
               <div>
-                <span class="treatment-price-label">Starting Price</span>
+                <span class="treatment-price-label">Starting from</span>
                 <span class="treatment-price-value" data-config="rctPrice">₹2,499</span>
               </div>
               <button onclick="openTreatmentModal('rct')" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.82rem;">View Details</button>
@@ -1316,7 +1316,7 @@
             </ul>
             <div class="treatment-footer">
               <div>
-                <span class="treatment-price-label">Starting From</span>
+                <span class="treatment-price-label">Starting from</span>
                 <span class="treatment-price-value" data-config="implantsPrice">₹18,999</span>
               </div>
               <button onclick="openTreatmentModal('implants')" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.82rem;">View Details</button>
@@ -1340,7 +1340,7 @@
             </ul>
             <div class="treatment-footer">
               <div>
-                <span class="treatment-price-label">Complete Package</span>
+                <span class="treatment-price-label">Starting from</span>
                 <span class="treatment-price-value" data-config="whiteningPrice">₹4,499</span>
               </div>
               <button onclick="openTreatmentModal('whitening')" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.82rem;">View Details</button>
@@ -1364,7 +1364,7 @@
             </ul>
             <div class="treatment-footer">
               <div>
-                <span class="treatment-price-label">Per Tooth From</span>
+                <span class="treatment-price-label">Starting from</span>
                 <span class="treatment-price-value" data-config="veneersPrice">₹4,999</span>
               </div>
               <button onclick="openTreatmentModal('veneers')" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.82rem;">View Details</button>
@@ -1388,7 +1388,7 @@
             </ul>
             <div class="treatment-footer">
               <div>
-                <span class="treatment-price-label">Consultation & Care From</span>
+                <span class="treatment-price-label">Starting from</span>
                 <span class="treatment-price-value" data-config="consultationPrice">₹499</span>
               </div>
               <button onclick="openTreatmentModal('kids')" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.82rem;">View Details</button>
@@ -1511,7 +1511,7 @@
           <h2 class="doctor-title" data-config="doctorName">Dr. S. Lathasree</h2>
           <div class="doctor-degree" data-config="doctorDegrees">BDS, MDS (Cosmetic Dentistry & Oral Implantology)</div>
           <p class="doctor-bio" data-config="doctorBio">
-            "A healthy, beautiful smile brings lifelong confidence. We provide gentle, ethical, and 100% pain-free dental care equipped with modern digital technology and sterilized hospital-grade hygiene."
+            "A healthy, beautiful smile brings lifelong confidence. We provide gentle, ethical, and gentle and painless dental care equipped with modern digital technology and sterilized hospital-grade hygiene."
           </p>
           <div class="doctor-badges-row">
             <div class="doc-badge-chip"><i class="fa-solid fa-medal"></i> Member, Indian Dental Association (IDA)</div>
@@ -2178,12 +2178,12 @@
         <form id="indiaBookingForm" onsubmit="handleIndiaBooking(event)">
           <div class="form-grid">
             <div class="form-group">
-              <label class="form-label" for="ptName">Patient Full Name *</label>
+              <label class="form-label" for="ptName">Patient Name *</label>
               <input type="text" id="ptName" class="form-control" placeholder="e.g. Ramesh Reddy" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="ptPhone">WhatsApp / Mobile Number *</label>
+              <label class="form-label" for="ptPhone">WhatsApp / Mobile *</label>
               <input type="tel" id="ptPhone" class="form-control" placeholder="e.g. 93475 94646" required>
             </div>
 
@@ -2195,43 +2195,30 @@
                 <option value="Dental Implants">Dental Implants (Lifetime Warranty)</option>
                 <option value="Laser Teeth Whitening">Laser Teeth Whitening</option>
                 <option value="Veneers and Smile Design">Veneers & Smile Designing</option>
-                <option value="Kids or Family Dental Care">Kids & Family Checkup</option>
-                <option value="Severe Emergency Toothache">Urgent Emergency Toothache</option>
+                <option value="General & Pediatric Care">Kids & Family Checkup</option>
+                <option value="Urgent Dental Emergency">Urgent Emergency Toothache</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="ptDate">Preferred Date *</label>
-              <input type="date" id="ptDate" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="ptSlot">Preferred OPD Slot *</label>
-              <select id="ptSlot" class="form-control" required>
-                <option value="Morning OPD (10:00 AM - 1:30 PM)">Morning OPD (10:00 AM - 1:30 PM)</option>
-                <option value="Evening OPD (5:00 PM - 8:30 PM)">Evening OPD (5:00 PM - 8:30 PM)</option>
-                <option value="Sunday by Priority Appointment">Sunday Priority OPD</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="ptCity">Your Area / Colony</label>
-              <input type="text" id="ptCity" class="form-control" placeholder="e.g. KU Cross / Subedari / Kazipet">
-            </div>
-
-            <div class="form-group full-width">
-              <label class="form-label" for="ptNotes">Brief Dental Concern / Note (Optional)</label>
-              <textarea id="ptNotes" rows="3" class="form-control" placeholder="Describe your pain, symptoms, or aesthetic goal..."></textarea>
+              <label class="form-label" for="ptDate">Preferred Date & Slot *</label>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="date" id="ptDate" class="form-control" required>
+                <select id="ptSlot" class="form-control" required>
+                  <option value="Morning (10:00 AM - 1:30 PM)">Morning (10 AM - 1:30 PM)</option>
+                  <option value="Evening (5:00 PM - 8:30 PM)">Evening (5 PM - 8:30 PM)</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-            <div style="font-size: 0.85rem; color: var(--text-muted);">
-              <i class="fa-solid fa-lock" style="color: var(--teal-primary);"></i> 100% Confidential & Direct Doctor Follow-up
+          <div style="margin-top: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="font-size: 0.88rem; color: var(--text-muted);">
+              <i class="fa-solid fa-shield-check" style="color: var(--teal-primary);"></i> Confidential & Direct Doctor Confirmation
             </div>
-            <button type="submit" class="btn btn-teal" style="padding: 15px 36px;">
-              <span>Confirm OPD Appointment</span>
-              <i class="fa-solid fa-paper-plane"></i>
+            <button type="submit" class="btn btn-teal" style="padding: 14px 34px;">
+              <span>Confirm Appointment</span>
+              <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
         </form>
@@ -2267,7 +2254,7 @@
               <span class="brand-text-sub" data-config="clinicTagline">Multispeciality & Implant Center</span>
             </div>
           </div>
-          <p style="font-size: 0.88rem; line-height: 1.7; color: #94A3B8; margin-bottom: 20px;">
+          <p style="font-size: 0.95rem; line-height: 1.7; color: #94A3B8; margin-bottom: 20px;">
             Providing painless, ethical, and high-precision dental treatments in Hanamkonda with certified NABH sterilization protocols and lifetime warranty implants.
           </p>
           <div style="display: flex; gap: 12px;">
@@ -2346,10 +2333,7 @@
   </div>
 
   <!-- Agency Pitch Link Generator Button & Modal -->
-  <button id="pitchGenBtn" onclick="openPitchModal()" title="Generate Personalized Pitch Link" style="position: fixed; bottom: 25px; left: 25px; background: #0F172A; color: #FFFFFF; border: 1.5px solid #0D9488; padding: 10px 18px; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; cursor: pointer; z-index: 9999; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.25);">
-    <i class="fa-solid fa-bolt" style="color: #14B8A6;"></i>
-    <span>Pitch Link Generator</span>
-  </button>
+  <!-- Pitch Generator accessible via Alt+G -->
 
   <div id="pitchModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
     <div style="background: #FFFFFF; border-radius: 20px; max-width: 580px; width: 100%; padding: 35px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); position: relative;" onclick="event.stopPropagation()">
@@ -2420,13 +2404,13 @@
     let currentLang = 'en';
     const translations = {
       en: {
-        headline: "Smile with Confidence. <br><span class='highlight'>100% Pain-Free</span> & Precision Dental Care.",
+        headline: "Smile with Confidence. <br><span class='highlight'>Gentle & Painless</span> & Precision Dental Care.",
         subDesc: "Single-sitting Painless Root Canal (RCT), German Dental Implants with Lifetime Warranty, and Invisible Aligners. Experience gentle, transparent, and ethical dental excellence by senior MDS specialists.",
         ctaBook: "Book Priority OPD Consultation",
         ctaWa: "Direct Doctor WhatsApp"
       },
       hi: {
-        headline: "बेफिक्र होकर मुस्कुराइए! <br><span class='highlight'>100% दर्द-मुक्त</span> और मॉडर्न डेंटल केयर।",
+        headline: "बेफिक्र होकर मुस्कुराइए! <br><span class='highlight'>कोमल और दर्द-मुक्त</span> और मॉडर्न डेंटल केयर।",
         subDesc: "सिंगल-सिटिंग दर्द-मुक्त रूट कैनाल (RCT), लाइफटाइम वारंटी वाले जर्मन डेंटल इम्प्लांट्स और पारदर्शी अदृश्य अलाइनर्स। सीनियर MDS स्पेशलिस्ट द्वारा कोमल और पारदर्शी इलाज।",
         ctaBook: "ओपीडी अपॉइंटमेंट बुक करें",
         ctaWa: "डॉक्टर से सीधे व्हाट्सएप करें"
