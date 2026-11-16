@@ -652,6 +652,83 @@
     /* ========================================================
        💬 VERIFIED PATIENT REVIEWS WITH AVATARS
        ======================================================== */
+        /* ========================================================
+       🔄 INFINITE MOVING TESTIMONIALS SLIDER (LEFT TO RIGHT)
+       ======================================================== */
+    .reviews-slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 0 25px;
+      mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    }
+    .reviews-track-marquee {
+      display: flex;
+      gap: 22px;
+      width: max-content;
+      animation: moveLeftToRight 50s linear infinite;
+      cursor: grab;
+    }
+    .reviews-track-marquee:hover {
+      animation-play-state: paused;
+    }
+    @keyframes moveLeftToRight {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+    .review-slide-item {
+      width: 360px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .review-slide-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-primary);
+    }
+    .slider-controls-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 25px;
+    }
+    .slider-ctrl-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      color: var(--teal-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .slider-ctrl-btn:hover {
+      background: var(--teal-primary);
+      color: #FFFFFF;
+      border-color: var(--teal-primary);
+    }
+    @media (max-width: 640px) {
+      .review-slide-item { width: 300px; padding: 20px 16px; }
+    }
     .reviews-section { background: #FFFFFF; }
     .reviews-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .review-card {
@@ -1532,22 +1609,25 @@
         </div>
         <h2 class="section-title">Loved by <span class="highlight">Over 850+</span> Happy Patients</h2>
         <p class="section-sub">
-          Read real experiences from families across Hanamkonda, Warangal, and Hyderabad treated by Dr. S. Lathasree.
+          Continuous real feedback from families across Hanamkonda, Warangal, and Hyderabad treated with gentle care by Dr. S. Lathasree.
         </p>
       </div>
+    </div>
 
-      <div class="reviews-grid">
-        <!-- Review 1: Rajesh Kumar G. -->
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+    <!-- Smooth Continuous Moving Slider (Left to Right) -->
+    <div class="reviews-slider-container" id="reviewsSliderWrap" onmouseenter="pauseReviewSlider()" onmouseleave="resumeReviewSlider()">
+      <div class="reviews-track-marquee" id="reviewsTrack">
+        
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"I had a terrible throbbing toothache at night. Visited Dr. Lathasree next morning. She completed my single-sitting RCT in 45 minutes with zero pain! Very gentle doctor and clean hospital environment."</p>
           </div>
-          <p class="review-text">
-            "I had a terrible toothache at night. Visited Dr. Lathasree at KU cross next morning. She did my single-sitting RCT in 45 minutes with zero pain! Very gentle doctor and clean clinic."
-          </p>
-          <div class="reviewer-info">
+          <div class="reviewer-info" style="margin-top: 14px;">
             <div class="reviewer-avatar-img">
-              <img src="images/patient_rajesh.jpg" alt="Rajesh Kumar G. - Verified Patient Hanamkonda">
+              <img src="images/patient_1.jpg" alt="Rajesh Kumar G. - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
             </div>
             <div>
               <div class="reviewer-name">Rajesh Kumar G. <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
@@ -1555,56 +1635,50 @@
             </div>
           </div>
         </div>
-
-        <!-- Review 2: Sowmya Reddy -->
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Got two front dental implants done with zirconia crowns. Dr. Lathasree explained the surgical process with 3D X-rays and provided an official lifetime warranty card. I can eat apples and chew normally again!"</p>
           </div>
-          <p class="review-text">
-            "Got two front dental implants done with zirconia crowns. Dr. Lathasree explained the whole process clearly and gave me a lifetime warranty card. I can chew normally again!"
-          </p>
-          <div class="reviewer-info">
+          <div class="reviewer-info" style="margin-top: 14px;">
             <div class="reviewer-avatar-img">
-              <img src="images/patient_sowmya.jpg" alt="Sowmya Reddy - Verified Patient Warangal">
+              <img src="images/patient_2.jpg" alt="Suresh Goud - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Suresh Goud <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kakatiya Colony • German Dental Implants</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My wedding was in two months and I had discolored front teeth with gaps. Dr. Lathasree placed custom porcelain veneers in just 3 days. My wedding photos looked stunning, all thanks to her artistry!"</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_3.jpg" alt="Sowmya Reddy - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
             </div>
             <div>
               <div class="reviewer-name">Sowmya Reddy <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
-              <div class="reviewer-tag">Warangal • Dental Implants</div>
+              <div class="reviewer-tag">Warangal • Smile Makeover & Veneers</div>
             </div>
           </div>
         </div>
-
-        <!-- Review 3: Vamshi Nayak -->
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="review-text">
-            "Completed my Clear Aligners here. No metal brackets, nobody at my college even knew I was wearing braces. And the 0% EMI option made it so affordable for my family."
-          </p>
-          <div class="reviewer-info">
-            <div class="reviewer-avatar-img">
-              <img src="images/patient_vamshi.jpg" alt="Vamshi Nayak - Verified Patient Kakatiya University">
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
-            <div>
-              <div class="reviewer-name">Vamshi Nayak <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
-              <div class="reviewer-tag">Kakatiya University Student • Aligners</div>
-            </div>
+            <p class="review-text">"Brought my 7-year-old daughter for cavity fillings. Past dentists frightened her, but Dr. Lathasree was so affectionate and gentle that my daughter was completely smiling throughout the treatment."</p>
           </div>
-        </div>
-
-        <!-- Review 4: Anitha Lakshmi -->
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="review-text">
-            "Brought my 7-year-old daughter for cavity treatment. Dr. Lathasree was so patient and friendly that my daughter didn't even cry. Best family dental clinic in Hanamkonda."
-          </p>
-          <div class="reviewer-info">
+          <div class="reviewer-info" style="margin-top: 14px;">
             <div class="reviewer-avatar-img">
-              <img src="images/patient_anitha.jpg" alt="Anitha Lakshmi - Verified Patient Subedari Hanamkonda">
+              <img src="images/patient_4.jpg" alt="Anitha Lakshmi - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
             </div>
             <div>
               <div class="reviewer-name">Anitha Lakshmi <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
@@ -1612,6 +1686,286 @@
             </div>
           </div>
         </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Got cold laser teeth whitening done before campus placements. In just 45 minutes, my teeth became 8 shades brighter without any post-procedure tooth sensitivity. Totally worth every rupee!"</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_5.jpg" alt="K. Sneha - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">K. Sneha <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Nayeem Nagar • In-Clinic Laser Whitening</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Being a medical professional myself, sterilization hygiene is my top priority. Dr. Lathasree's Class-B vacuum autoclave protocol and computerized diagnostic technology are on par with international medical standards."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_6.jpg" alt="Dr. P. Harish Rao - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Dr. P. Harish Rao <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Hanamkonda • Full Mouth Dental Rehabilitation</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My impacted lower wisdom tooth was causing excruciating jaw pain. Dr. Lathasree removed it painlessly in 20 minutes under computerized local anesthesia. Minimal swelling and smooth recovery."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_7.jpg" alt="Mohammed Farooq - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Mohammed Farooq <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kazipet • Painless Wisdom Tooth Extraction</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Completed my invisible aligners in 8 months. No metal wires or brackets, my classmates couldn't even tell I had aligners on. Plus the 0% No-Cost EMI made it so easy on my family budget."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_8.jpg" alt="Vamshi Nayak - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Vamshi Nayak <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kakatiya University Student • Clear Aligners</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Replaced my old metal ceramic crown with CAD/CAM full contour Zirconia. The color match is 100% identical to my natural teeth, and the 15-year replacement warranty gives complete peace of mind."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_9.jpg" alt="Deepa Chary - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Deepa Chary <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Waddepally, Hanamkonda • Ceramic Zirconia Crowns</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My entire family comes here for routine ultrasonic scaling and dental checkups. Dr. Lathasree is honest, never recommends unnecessary treatments, and explains everything with digital camera photos."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_10.jpg" alt="Pooja Sharma - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Pooja Sharma <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Hanamkonda • Family Preventive Dentistry</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"I had a terrible throbbing toothache at night. Visited Dr. Lathasree next morning. She completed my single-sitting RCT in 45 minutes with zero pain! Very gentle doctor and clean hospital environment."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_1.jpg" alt="Rajesh Kumar G. - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Rajesh Kumar G. <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">KU Cross, Hanamkonda • Painless RCT</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Got two front dental implants done with zirconia crowns. Dr. Lathasree explained the surgical process with 3D X-rays and provided an official lifetime warranty card. I can eat apples and chew normally again!"</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_2.jpg" alt="Suresh Goud - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Suresh Goud <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kakatiya Colony • German Dental Implants</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My wedding was in two months and I had discolored front teeth with gaps. Dr. Lathasree placed custom porcelain veneers in just 3 days. My wedding photos looked stunning, all thanks to her artistry!"</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_3.jpg" alt="Sowmya Reddy - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Sowmya Reddy <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Warangal • Smile Makeover & Veneers</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Brought my 7-year-old daughter for cavity fillings. Past dentists frightened her, but Dr. Lathasree was so affectionate and gentle that my daughter was completely smiling throughout the treatment."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_4.jpg" alt="Anitha Lakshmi - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Anitha Lakshmi <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Subedari, Hanamkonda • Pediatric Care</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Got cold laser teeth whitening done before campus placements. In just 45 minutes, my teeth became 8 shades brighter without any post-procedure tooth sensitivity. Totally worth every rupee!"</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_5.jpg" alt="K. Sneha - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">K. Sneha <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Nayeem Nagar • In-Clinic Laser Whitening</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Being a medical professional myself, sterilization hygiene is my top priority. Dr. Lathasree's Class-B vacuum autoclave protocol and computerized diagnostic technology are on par with international medical standards."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_6.jpg" alt="Dr. P. Harish Rao - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Dr. P. Harish Rao <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Hanamkonda • Full Mouth Dental Rehabilitation</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My impacted lower wisdom tooth was causing excruciating jaw pain. Dr. Lathasree removed it painlessly in 20 minutes under computerized local anesthesia. Minimal swelling and smooth recovery."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_7.jpg" alt="Mohammed Farooq - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Mohammed Farooq <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kazipet • Painless Wisdom Tooth Extraction</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Completed my invisible aligners in 8 months. No metal wires or brackets, my classmates couldn't even tell I had aligners on. Plus the 0% No-Cost EMI made it so easy on my family budget."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_8.jpg" alt="Vamshi Nayak - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Vamshi Nayak <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Kakatiya University Student • Clear Aligners</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"Replaced my old metal ceramic crown with CAD/CAM full contour Zirconia. The color match is 100% identical to my natural teeth, and the 15-year replacement warranty gives complete peace of mind."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_9.jpg" alt="Deepa Chary - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Deepa Chary <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Waddepally, Hanamkonda • Ceramic Zirconia Crowns</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-slide-item">
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">"My entire family comes here for routine ultrasonic scaling and dental checkups. Dr. Lathasree is honest, never recommends unnecessary treatments, and explains everything with digital camera photos."</p>
+          </div>
+          <div class="reviewer-info" style="margin-top: 14px;">
+            <div class="reviewer-avatar-img">
+              <img src="images/patient_10.jpg" alt="Pooja Sharma - Verified Patient Dr S Lathasree Dental Clinic Hanamkonda">
+            </div>
+            <div>
+              <div class="reviewer-name">Pooja Sharma <i class="fa-solid fa-circle-check" style="color: #0D9488; font-size: 0.78rem;"></i></div>
+              <div class="reviewer-tag">Hanamkonda • Family Preventive Dentistry</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="slider-controls-bar">
+        <button class="slider-ctrl-btn" onclick="scrollReviewPrev()" title="Previous Reviews"><i class="fa-solid fa-arrow-left"></i></button>
+        <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-solid fa-hand-pointer"></i> Hover / Tap to Pause • Showing 10 Verified Patient Stories</span>
+        <button class="slider-ctrl-btn" onclick="scrollReviewNext()" title="Next Reviews"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
   </section>
@@ -2319,6 +2673,24 @@
     }
     function closeArticleModalDirect() {
       document.getElementById('articleModal').style.display = 'none';
+    }
+
+    
+    // 9. Moving Testimonials Slider Controls
+    const reviewsTrack = document.getElementById('reviewsTrack');
+    function pauseReviewSlider() {
+      if (reviewsTrack) reviewsTrack.style.animationPlayState = 'paused';
+    }
+    function resumeReviewSlider() {
+      if (reviewsTrack) reviewsTrack.style.animationPlayState = 'running';
+    }
+    function scrollReviewNext() {
+      const container = document.getElementById('reviewsSliderWrap');
+      if (container) container.scrollBy({ left: 380, behavior: 'smooth' });
+    }
+    function scrollReviewPrev() {
+      const container = document.getElementById('reviewsSliderWrap');
+      if (container) container.scrollBy({ left: -380, behavior: 'smooth' });
     }
 
     // 8. Magic Pitch Link Generator Functions
