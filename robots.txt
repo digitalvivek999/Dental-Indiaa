@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dental-indiaa.netlify.app/sitemap.xml
+Sitemap: https://drsankendlalathasree.in/sitemap.xml
