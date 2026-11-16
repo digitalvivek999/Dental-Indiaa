@@ -1004,7 +1004,20 @@
       .emergency-inner { text-align: center; justify-content: center; }
       .emergency-inner .btn { width: 100%; }
     }
-  </style>
+  
+    /* Doctor Intro Video: Show full face without any cropping */
+    #doctorIntroVideo {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 540px !important;
+      object-fit: contain !important;
+      object-position: center top !important;
+      background: #0F172A !important;
+      border-radius: 16px !important;
+      display: block !important;
+    }
+
+</style>
 
   <!-- Comprehensive Mobile Optimization & Overflow Fix -->
   <style>
@@ -1816,7 +1829,7 @@
 
             <!-- HTML5 Video Player -->
             <div style="position: relative; border-radius: 16px; overflow: hidden; background: #0F172A; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
-              <video id="doctorIntroVideo" controls playsinline preload="metadata" poster="images/doctor.jpg" style="width: 100%; display: block; border-radius: 16px; max-height: 440px; object-fit: cover;">
+              <video id="doctorIntroVideo" controls playsinline preload="metadata" poster="images/doctor.jpg" style="width: 100%; height: auto; max-height: 540px; display: block; border-radius: 16px; object-fit: contain; background: #0F172A;">
                 <source src="images/doctor_intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
