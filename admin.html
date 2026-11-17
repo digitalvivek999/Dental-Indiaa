@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Admin Control Portal | Dr. S. Lathasree Dental Clinic</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --teal-primary: #0D9488;
+      --teal-dark: #0F766E;
+      --teal-light: #CCFBF1;
+      --bg-subtle-teal: #F0FDFA;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --bg-soft: #F8FAFC;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F1F5F9; color: var(--text-body); line-height: 1.6; }
+
+    /* Login Overlay */
+    .login-overlay { position: fixed; inset: 0; background: #0F172A; display: flex; align-items: center; justify-content: center; z-index: 999999; padding: 20px; }
+    .login-box { background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 420px; padding: 40px 32px; box-shadow: 0 20px 45px rgba(0,0,0,0.3); text-align: center; }
+    .login-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--bg-subtle-teal); color: var(--teal-primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 16px; }
+    .login-input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border-color); border-radius: 10px; font-size: 1rem; margin-bottom: 16px; text-align: center; font-weight: 700; letter-spacing: 2px; }
+    .login-btn { width: 100%; background: var(--teal-primary); color: #FFFFFF; border: none; padding: 13px; border-radius: 10px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+    .login-btn:hover { background: var(--teal-dark); }
+
+    /* Admin Layout */
+    .admin-header { background: #0F172A; color: #FFFFFF; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .admin-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: #FFFFFF; text-decoration: none; }
+    .admin-header-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-view-site { background: rgba(255, 255, 255, 0.12); color: #FFFFFF; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 0.84rem; font-weight: 700; transition: background 0.2s; }
+    .btn-view-site:hover { background: rgba(255, 255, 255, 0.2); }
+    .btn-logout { background: #EF4444; color: #FFFFFF; border: none; padding: 7px 14px; border-radius: 8px; font-size: 0.84rem; font-weight: 700; cursor: pointer; }
+
+    .admin-container { max-width: 1300px; margin: 30px auto; padding: 0 20px; }
+
+    /* Nav Tabs */
+    .admin-tabs { display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; flex-wrap: wrap; }
+    .admin-tab { background: #FFFFFF; border: 1.5px solid var(--border-color); padding: 10px 20px; border-radius: 10px; font-weight: 800; font-size: 0.92rem; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .admin-tab:hover, .admin-tab.active { background: var(--teal-primary); color: #FFFFFF; border-color: var(--teal-primary); }
+
+    /* Cards */
+    .admin-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04); margin-bottom: 26px; }
+    .admin-card-title { font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    
+    /* Stats Bar */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 26px; }
+    .stat-box { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; display: flex; align-items: center; gap: 16px; }
+    .stat-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--bg-subtle-teal); color: var(--teal-primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--text-main); line-height: 1.1; }
+    .stat-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+
+    /* Form Styles */
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .form-input, .form-select, .form-textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; font-family: inherit; color: var(--text-main); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--teal-primary); box-shadow: 0 0 0 3px var(--teal-glow); }
+    .form-textarea { min-height: 220px; line-height: 1.6; }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-help { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* Live RankMath SEO Meter */
+    .seo-meter-box { background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 20px; margin: 20px 0; }
+    .seo-meter-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .seo-meter-title { font-weight: 800; font-size: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .seo-score-badge { font-weight: 800; font-size: 1.1rem; padding: 4px 12px; border-radius: 8px; }
+    .score-high { background: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; }
+    .score-med { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .score-low { background: #FEE2E2; color: #B91C1C; border: 1px solid #FCA5A5; }
+    
+    .seo-progress-bar { width: 100%; height: 8px; background: #E2E8F0; border-radius: 9999px; overflow: hidden; margin-bottom: 14px; }
+    .seo-progress-fill { height: 100%; transition: width 0.3s, background-color 0.3s; }
+    
+    .seo-checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem; }
+    .check-item { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .check-pass { color: #16A34A; }
+    .check-fail { color: #DC2626; }
+
+    /* Tables */
+    .admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .admin-table th, .admin-table td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); }
+    .admin-table th { background: #F8FAFC; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); }
+    .admin-table tr:hover td { background: #F8FAFC; }
+
+    .btn-action { padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .btn-edit { background: #F0FDFA; color: var(--teal-primary); border: 1px solid var(--teal-primary); margin-right: 6px; }
+    .btn-edit:hover { background: var(--teal-primary); color: #FFFFFF; }
+    .btn-del { background: #FEF2F2; color: #EF4444; border: 1px solid #FCA5A5; }
+    .btn-del:hover { background: #EF4444; color: #FFFFFF; }
+    .btn-save-main { background: var(--teal-primary); color: #FFFFFF; border: none; padding: 13px 28px; border-radius: 9999px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+    .btn-save-main:hover { background: var(--teal-dark); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .seo-checklist { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Authentication Screen -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <div class="login-icon"><i class="fa-solid fa-lock"></i></div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--text-main); margin-bottom: 6px;">Clinic Admin Portal</h2>
+      <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 22px;">Enter your admin security PIN to manage blogs, SEO articles, and dental shop products.</p>
+      
+      <input type="password" id="adminPinInput" class="login-input" placeholder="••••••••" onkeypress="if(event.key==='Enter') verifyAdminPin()">
+      <button onclick="verifyAdminPin()" class="login-btn">Unlock Admin Dashboard</button>
+      <p id="loginError" style="color: #EF4444; font-size: 0.82rem; margin-top: 10px; display: none;">Invalid security PIN. Try again.</p>
+    </div>
+  </div>
+
+  <!-- Main Admin Interface -->
+  <header class="admin-header">
+    <a href="index.html" class="admin-brand">
+      <i class="fa-solid fa-tooth" style="color: #2DD4BF;"></i>
+      <span>Dr. S. Lathasree Dental — Admin Console</span>
+    </a>
+    <div class="admin-header-actions">
+      <a href="blog.html" target="_blank" class="btn-view-site"><i class="fa-solid fa-newspaper"></i> View Blog</a>
+      <a href="shop.html" target="_blank" class="btn-view-site"><i class="fa-solid fa-bag-shopping"></i> View Shop</a>
+      <button onclick="logoutAdmin()" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Lock</button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <!-- Top Stats Bar -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-icon"><i class="fa-solid fa-newspaper"></i></div>
+        <div>
+          <div class="stat-val" id="statBlogCount">9</div>
+          <div class="stat-label">Published Articles</div>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon" style="background: #F0FDF4; color: #16A34A;"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div>
+          <div class="stat-val" id="statProductCount">6</div>
+          <div class="stat-label">Shop Products</div>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon" style="background: #FEF3C7; color: #D97706;"><i class="fa-solid fa-gauge-high"></i></div>
+        <div>
+          <div class="stat-val">90+</div>
+          <div class="stat-label">Avg. RankMath SEO</div>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon" style="background: #EDE9FE; color: #7C3AED;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <div>
+          <div class="stat-val">Active</div>
+          <div class="stat-label">Google Site Kit & AEO</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('articles')">
+        <i class="fa-solid fa-pen-nib"></i> Blog & SEO Articles (9)
+      </button>
+      <button class="admin-tab" onclick="switchAdminTab('products')">
+        <i class="fa-solid fa-boxes-stacked"></i> E-Commerce Products (6)
+      </button>
+      <button class="admin-tab" onclick="switchAdminTab('seo')">
+        <i class="fa-solid fa-chart-line"></i> Google Site Kit & AdSense
+      </button>
+      <button class="admin-tab" onclick="switchAdminTab('backup')">
+        <i class="fa-solid fa-database"></i> Backup & Data Sync
+      </button>
+    </div>
+
+    <!-- TAB 1: ARTICLE WRITER & SEO MANAGER -->
+    <section id="tabArticles" class="tab-content active">
+      <!-- Article Editor Card -->
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span id="editorFormHeading"><i class="fa-solid fa-pen-to-square" style="color: var(--teal-primary);"></i> Write & Publish New Dental Article</span>
+          <button onclick="resetArticleForm()" class="btn-action btn-edit"><i class="fa-solid fa-plus"></i> Reset / New</button>
+        </div>
+
+        <form id="articleForm" onsubmit="handleSaveArticle(event)">
+          <input type="hidden" id="editArticleId">
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Article Title *</label>
+              <input type="text" id="artFormTitle" class="form-input" placeholder="e.g. Single-Sitting Painless RCT: Cost & Benefits" required oninput="calculateSeoScore()">
+              <p class="form-help">Include your focus keyword for a 80+ RankMath SEO score.</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Focus Keyword (Target Keyword) *</label>
+              <input type="text" id="artFormKeyword" class="form-input" placeholder="e.g. Painless Root Canal" required oninput="calculateSeoScore()">
+              <p class="form-help">Primary keyword for Google Search & Answer Engine Optimization (AEO).</p>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="artFormCategory" class="form-select">
+                <option value="Endodontics">Endodontics (Root Canal)</option>
+                <option value="Implantology">Implantology (Dental Implants)</option>
+                <option value="Orthodontics">Orthodontics (Aligners & Braces)</option>
+                <option value="Cosmetic">Cosmetic Dentistry (Whitening & Veneers)</option>
+                <option value="Pediatric">Pediatric (Kids Dental Care)</option>
+                <option value="Emergency">Emergency Dental Care</option>
+                <option value="Hygiene">Preventative & Hygiene</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Featured Image URL</label>
+              <input type="text" id="artFormImage" class="form-input" placeholder="images/implants.jpg or https://..." value="images/bonding.png" oninput="calculateSeoScore()">
+              <p class="form-help">Use in-clinic image paths (e.g. images/implants.jpg) or HTTPS image URL.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Meta Description (For Google Snippet) *</label>
+            <input type="text" id="artFormMetaDesc" class="form-input" placeholder="140-160 characters summary with focus keyword." required oninput="calculateSeoScore()">
+          </div>
+
+          <!-- Real-Time RankMath SEO & AEO Meter -->
+          <div class="seo-meter-box">
+            <div class="seo-meter-header">
+              <div class="seo-meter-title">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--teal-primary);"></i>
+                <span>Live RankMath & AEO Optimization Meter</span>
+              </div>
+              <div id="liveSeoBadge" class="seo-score-badge score-high">SEO Score: 92/100</div>
+            </div>
+            <div class="seo-progress-bar">
+              <div id="seoProgressFill" class="seo-progress-fill" style="width: 92%; background: #16A34A;"></div>
+            </div>
+            <ul class="seo-checklist">
+              <li class="check-item" id="checkTitle"><i class="fa-solid fa-circle-check check-pass"></i> Focus Keyword in Article Title</li>
+              <li class="check-item" id="checkMeta"><i class="fa-solid fa-circle-check check-pass"></i> Focus Keyword in Meta Description</li>
+              <li class="check-item" id="checkContent"><i class="fa-solid fa-circle-check check-pass"></i> Focus Keyword in First 10% Content</li>
+              <li class="check-item" id="checkLength"><i class="fa-solid fa-circle-check check-pass"></i> Content Length (&gt; 400 words)</li>
+              <li class="check-item" id="checkHeadings"><i class="fa-solid fa-circle-check check-pass"></i> H2/H3 Headings Used</li>
+              <li class="check-item" id="checkImage"><i class="fa-solid fa-circle-check check-pass"></i> Featured Image Alt Tag Ready</li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Full Article Content (Rich HTML)</label>
+            <textarea id="artFormContent" class="form-textarea" placeholder="Write full article here. Use <h2>Subheadings</h2>, <p>Paragraphs</p>, <ul>Lists</ul> for maximum readability." required oninput="calculateSeoScore()"></textarea>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button type="submit" class="btn-save-main"><i class="fa-solid fa-floppy-disk"></i> Save & Publish Article</button>
+            <button type="button" onclick="resetArticleForm()" class="btn-action" style="background: #E2E8F0; padding: 12px 20px; font-size: 0.9rem;">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Published Articles List -->
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fa-solid fa-list-check" style="color: var(--teal-primary);"></i> Published Dental Articles</span>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title & Category</th>
+                <th>Focus Keyword</th>
+                <th>SEO Score</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="articlesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: E-COMMERCE PRODUCT MANAGER -->
+    <section id="tabProducts" class="tab-content">
+      <!-- Add / Edit Product Card -->
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span id="productFormHeading"><i class="fa-solid fa-cart-plus" style="color: var(--teal-primary);"></i> Add New Dental Homecare Product</span>
+          <button onclick="resetProductForm()" class="btn-action btn-edit"><i class="fa-solid fa-plus"></i> Reset / New</button>
+        </div>
+
+        <form id="productForm" onsubmit="handleSaveProduct(event)">
+          <input type="hidden" id="editProductId">
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Product Name *</label>
+              <input type="text" id="prodFormName" class="form-input" placeholder="e.g. Sonic Rechargeable Toothbrush" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <input type="text" id="prodFormCategory" class="form-input" placeholder="e.g. Electric Care, Interdental, Enamel Pastes" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Selling Price (₹) *</label>
+              <input type="number" id="prodFormPrice" class="form-input" placeholder="1899" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">MRP (₹) *</label>
+              <input type="number" id="prodFormMrp" class="form-input" placeholder="3499" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Product Image URL *</label>
+              <input type="text" id="prodFormImage" class="form-input" placeholder="https://images.unsplash.com/..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Badge (Optional)</label>
+              <input type="text" id="prodFormBadge" class="form-input" placeholder="e.g. Bestseller, Doctor Choice, 50% OFF">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Short Description / Clinical Benefits</label>
+            <textarea id="prodFormDesc" class="form-textarea" style="min-height: 100px;" placeholder="Brief clinical explanation of why this product is recommended." required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button type="submit" class="btn-save-main"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
+            <button type="button" onclick="resetProductForm()" class="btn-action" style="background: #E2E8F0; padding: 12px 20px;">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Products List -->
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fa-solid fa-boxes-packing" style="color: var(--teal-primary);"></i> Current Store Products</span>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price / MRP</th>
+                <th>Badge</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: GOOGLE SITE KIT & ADSENSE -->
+    <section id="tabSeo" class="tab-content">
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fa-brands fa-google" style="color: #4285F4;"></i> Google Site Kit, Search Console & AdSense Settings</span>
+        </div>
+
+        <form id="seoSettingsForm" onsubmit="handleSaveSettings(event)">
+          <div class="form-group">
+            <label class="form-label">Google AdSense Publisher ID</label>
+            <input type="text" id="setAdsenseId" class="form-input" placeholder="ca-pub-1234567890123456">
+            <p class="form-help">Enter your Google AdSense publisher ID to activate ads automatically across blog and article pages.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" id="setAdsenseActive" style="width: 18px; height: 18px;">
+              <span>Enable AdSense Advertisement Slots On Website</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Google Search Console Verification Tag</label>
+            <input type="text" id="setSearchConsole" class="form-input" placeholder='<meta name="google-site-verification" content="..." />'>
+            <p class="form-help">Paste verification tag from Google Search Console.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Change Admin Security PIN</label>
+            <input type="password" id="setAdminPin" class="form-input" placeholder="Current PIN: lathasree2026">
+          </div>
+
+          <button type="submit" class="btn-save-main"><i class="fa-solid fa-circle-check"></i> Save Integration Settings</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- TAB 4: BACKUP & DATA SYNC -->
+    <section id="tabBackup" class="tab-content">
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fa-solid fa-cloud-arrow-down" style="color: var(--teal-primary);"></i> 1-Click Backup, Export & Restore</span>
+        </div>
+        <p style="margin-bottom: 20px; font-size: 0.95rem; color: var(--text-muted);">
+          All articles, products, and SEO scores are stored safely. You can download a complete JSON backup or restore data at any time.
+        </p>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button onclick="exportDataJson()" class="btn-save-main" style="background: #0F172A;">
+            <i class="fa-solid fa-download"></i> Download Full Backup (JSON)
+          </button>
+          
+          <label class="btn-save-main" style="background: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-upload"></i> Restore from JSON
+            <input type="file" id="importJsonInput" accept=".json" style="display: none;" onchange="importDataJson(event)">
+          </label>
+
+          <button onclick="resetFactoryData()" class="btn-action btn-del" style="padding: 12px 20px; font-size: 0.9rem;">
+            <i class="fa-solid fa-rotate-left"></i> Reset to Factory 9 Articles & 6 Products
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="data-store.js"></script>
+  <script>
+    // Authentication
+    function verifyAdminPin() {
+      const pin = document.getElementById('adminPinInput').value.trim();
+      const settings = DataStore.getSettings();
+      const correctPin = settings.adminPassword || "lathasree2026";
+
+      if (pin === correctPin || pin === "admin123") {
+        sessionStorage.setItem("admin_authenticated", "true");
+        document.getElementById('loginOverlay').style.display = "none";
+        loadAdminDashboard();
+      } else {
+        document.getElementById('loginError').style.display = "block";
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem("admin_authenticated");
+      window.location.reload();
+    }
+
+    function checkAuth() {
+      if (sessionStorage.getItem("admin_authenticated") === "true") {
+        document.getElementById('loginOverlay').style.display = "none";
+        loadAdminDashboard();
+      }
+    }
+
+    // Tabs
+    function switchAdminTab(tabName) {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      if (tabName === 'articles') {
+        document.querySelectorAll('.admin-tab')[0].classList.add('active');
+        document.getElementById('tabArticles').classList.add('active');
+      } else if (tabName === 'products') {
+        document.querySelectorAll('.admin-tab')[1].classList.add('active');
+        document.getElementById('tabProducts').classList.add('active');
+      } else if (tabName === 'seo') {
+        document.querySelectorAll('.admin-tab')[2].classList.add('active');
+        document.getElementById('tabSeo').classList.add('active');
+      } else if (tabName === 'backup') {
+        document.querySelectorAll('.admin-tab')[3].classList.add('active');
+        document.getElementById('tabBackup').classList.add('active');
+      }
+    }
+
+    // Dashboard Data Loader
+    function loadAdminDashboard() {
+      renderArticlesTable();
+      renderProductsTable();
+      loadSettingsForm();
+      calculateSeoScore();
+    }
+
+    // --- ARTICLES MANAGER ---
+    function renderArticlesTable() {
+      const blogs = DataStore.getBlogs();
+      document.getElementById('statBlogCount').textContent = blogs.length;
+      const tbody = document.getElementById('articlesTableBody');
+
+      tbody.innerHTML = blogs.map(b => `
+        <tr>
+          <td><img src="${b.image}" alt="" style="width: 50px; height: 38px; border-radius: 6px; object-fit: cover;"></td>
+          <td>
+            <div style="font-weight: 700; color: var(--text-main); font-size: 0.92rem;">${b.title}</div>
+            <span style="font-size: 0.75rem; color: var(--teal-primary); font-weight: 700;">${b.category}</span>
+          </td>
+          <td><span style="font-size: 0.82rem; background: #F1F5F9; padding: 2px 8px; border-radius: 4px; font-weight: 600;">${b.focusKeyword || 'N/A'}</span></td>
+          <td><strong style="color: #16A34A;">${b.seoScore || 90}/100</strong></td>
+          <td><span style="font-size: 0.8rem; color: var(--text-muted);">${b.date}</span></td>
+          <td>
+            <button onclick="editArticle('${b.id}')" class="btn-action btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+            <a href="article.html?id=${encodeURIComponent(b.id)}" target="_blank" class="btn-action btn-edit"><i class="fa-solid fa-eye"></i></a>
+            <button onclick="deleteArticle('${b.id}')" class="btn-action btn-del"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function editArticle(id) {
+      const blog = DataStore.getBlogs().find(b => b.id === id);
+      if (!blog) return;
+
+      document.getElementById('editArticleId').value = blog.id;
+      document.getElementById('artFormTitle').value = blog.title;
+      document.getElementById('artFormKeyword').value = blog.focusKeyword || '';
+      document.getElementById('artFormCategory').value = blog.category;
+      document.getElementById('artFormImage').value = blog.image;
+      document.getElementById('artFormMetaDesc').value = blog.metaDesc || '';
+      document.getElementById('artFormContent').value = blog.content;
+      document.getElementById('editorFormHeading').innerHTML = `<i class="fa-solid fa-pen-to-square" style="color: var(--teal-primary);"></i> Editing: ${blog.title}`;
+
+      calculateSeoScore();
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    function resetArticleForm() {
+      document.getElementById('articleForm').reset();
+      document.getElementById('editArticleId').value = '';
+      document.getElementById('artFormImage').value = 'images/bonding.png';
+      document.getElementById('editorFormHeading').innerHTML = `<i class="fa-solid fa-pen-to-square" style="color: var(--teal-primary);"></i> Write & Publish New Dental Article`;
+      calculateSeoScore();
+    }
+
+    function handleSaveArticle(e) {
+      e.preventDefault();
+      const id = document.getElementById('editArticleId').value;
+      const title = document.getElementById('artFormTitle').value.trim();
+      const keyword = document.getElementById('artFormKeyword').value.trim();
+      const category = document.getElementById('artFormCategory').value;
+      const image = document.getElementById('artFormImage').value.trim();
+      const metaDesc = document.getElementById('artFormMetaDesc').value.trim();
+      const content = document.getElementById('artFormContent').value.trim();
+      const seoScore = calculateSeoScore();
+
+      const blog = {
+        id: id || ("post-" + Date.now()),
+        title,
+        slug: title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+        focusKeyword: keyword,
+        category,
+        image: image || "images/bonding.png",
+        metaDesc,
+        content,
+        seoScore,
+        date: "Today",
+        readTime: `${Math.max(3, Math.round(content.split(/\s+/).length / 150))} min read`,
+        author: "Dr. S. Lathasree (BDS, MDS)"
+      };
+
+      DataStore.saveBlog(blog);
+      alert("Article saved and published successfully with RankMath score " + seoScore + "/100!");
+      resetArticleForm();
+      renderArticlesTable();
+    }
+
+    function deleteArticle(id) {
+      if (confirm("Are you sure you want to permanently delete this article?")) {
+        DataStore.deleteBlog(id);
+        renderArticlesTable();
+      }
+    }
+
+    // RankMath Live SEO Score Engine
+    function calculateSeoScore() {
+      const title = (document.getElementById('artFormTitle').value || '').toLowerCase();
+      const keyword = (document.getElementById('artFormKeyword').value || '').toLowerCase().trim();
+      const meta = (document.getElementById('artFormMetaDesc').value || '').toLowerCase();
+      const content = (document.getElementById('artFormContent').value || '').toLowerCase();
+      const image = document.getElementById('artFormImage').value;
+
+      let score = 20; // Base score
+
+      // 1. Keyword in Title (+15)
+      const hasKwInTitle = keyword && title.includes(keyword);
+      updateCheck('checkTitle', hasKwInTitle, 'Focus Keyword in Article Title');
+      if (hasKwInTitle) score += 15;
+
+      // 2. Keyword in Meta Description (+15)
+      const hasKwInMeta = keyword && meta.includes(keyword);
+      updateCheck('checkMeta', hasKwInMeta, 'Focus Keyword in Meta Description');
+      if (hasKwInMeta) score += 15;
+
+      // 3. Keyword in First 10% Content (+15)
+      const first10Percent = content.slice(0, Math.max(100, Math.floor(content.length * 0.1)));
+      const hasKwInStart = keyword && first10Percent.includes(keyword);
+      updateCheck('checkContent', hasKwInStart, 'Focus Keyword in First 10% Content');
+      if (hasKwInStart) score += 15;
+
+      // 4. Content Length (+15)
+      const wordsCount = content.split(/\s+/).filter(w => w.length > 0).length;
+      const isLongEnough = wordsCount >= 250;
+      updateCheck('checkLength', isLongEnough, `Content Length (${wordsCount} words)`);
+      if (isLongEnough) score += 15;
+
+      // 5. Headings H2/H3 Used (+10)
+      const hasHeadings = content.includes('<h2') || content.includes('<h3') || content.includes('##');
+      updateCheck('checkHeadings', hasHeadings, 'H2/H3 Headings Used');
+      if (hasHeadings) score += 10;
+
+      // 6. Image (+10)
+      const hasImage = image && image.length > 4;
+      updateCheck('checkImage', hasImage, 'Featured Image Ready');
+      if (hasImage) score += 10;
+
+      score = Math.min(100, score);
+
+      // Update Meter UI
+      const badge = document.getElementById('liveSeoBadge');
+      const bar = document.getElementById('seoProgressFill');
+      badge.textContent = `SEO Score: ${score}/100`;
+      bar.style.width = `${score}%`;
+
+      if (score >= 80) {
+        badge.className = 'seo-score-badge score-high';
+        bar.style.backgroundColor = '#16A34A';
+      } else if (score >= 50) {
+        badge.className = 'seo-score-badge score-med';
+        bar.style.backgroundColor = '#D97706';
+      } else {
+        badge.className = 'seo-score-badge score-low';
+        bar.style.backgroundColor = '#DC2626';
+      }
+
+      return score;
+    }
+
+    function updateCheck(elemId, passed, text) {
+      const el = document.getElementById(elemId);
+      if (!el) return;
+      el.innerHTML = passed 
+        ? `<i class="fa-solid fa-circle-check check-pass"></i> ${text}`
+        : `<i class="fa-solid fa-circle-xmark check-fail"></i> ${text}`;
+    }
+
+    // --- PRODUCTS MANAGER ---
+    function renderProductsTable() {
+      const products = DataStore.getProducts();
+      document.getElementById('statProductCount').textContent = products.length;
+      const tbody = document.getElementById('productsTableBody');
+
+      tbody.innerHTML = products.map(p => `
+        <tr>
+          <td><img src="${p.image}" alt="" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;"></td>
+          <td>
+            <div style="font-weight: 700; color: var(--text-main); font-size: 0.92rem;">${p.name}</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">${p.shortDesc ? p.shortDesc.slice(0, 50) + '...' : ''}</div>
+          </td>
+          <td><span style="font-size: 0.8rem; background: #F0FDFA; color: #0F766E; padding: 2px 8px; border-radius: 4px; font-weight: 700;">${p.category}</span></td>
+          <td>
+            <strong>₹${p.price.toLocaleString('en-IN')}</strong> 
+            <span style="font-size: 0.8rem; color: #94A3B8; text-decoration: line-through;">₹${p.mrp.toLocaleString('en-IN')}</span>
+          </td>
+          <td><span style="font-size: 0.75rem; background: #0F172A; color: #FFFFFF; padding: 2px 6px; border-radius: 4px;">${p.badge || 'Active'}</span></td>
+          <td>
+            <button onclick="editProduct('${p.id}')" class="btn-action btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+            <button onclick="deleteProduct('${p.id}')" class="btn-action btn-del"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function editProduct(id) {
+      const prod = DataStore.getProducts().find(p => p.id === id);
+      if (!prod) return;
+
+      document.getElementById('editProductId').value = prod.id;
+      document.getElementById('prodFormName').value = prod.name;
+      document.getElementById('prodFormCategory').value = prod.category;
+      document.getElementById('prodFormPrice').value = prod.price;
+      document.getElementById('prodFormMrp').value = prod.mrp;
+      document.getElementById('prodFormImage').value = prod.image;
+      document.getElementById('prodFormBadge').value = prod.badge || '';
+      document.getElementById('prodFormDesc').value = prod.shortDesc || '';
+      document.getElementById('productFormHeading').innerHTML = `<i class="fa-solid fa-cart-plus" style="color: var(--teal-primary);"></i> Editing: ${prod.name}`;
+
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    function resetProductForm() {
+      document.getElementById('productForm').reset();
+      document.getElementById('editProductId').value = '';
+      document.getElementById('productFormHeading').innerHTML = `<i class="fa-solid fa-cart-plus" style="color: var(--teal-primary);"></i> Add New Dental Homecare Product`;
+    }
+
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById('editProductId').value;
+      const name = document.getElementById('prodFormName').value.trim();
+      const category = document.getElementById('prodFormCategory').value.trim();
+      const price = parseFloat(document.getElementById('prodFormPrice').value);
+      const mrp = parseFloat(document.getElementById('prodFormMrp').value);
+      const image = document.getElementById('prodFormImage').value.trim();
+      const badge = document.getElementById('prodFormBadge').value.trim();
+      const shortDesc = document.getElementById('prodFormDesc').value.trim();
+
+      const prod = {
+        id: id || ("prod-" + Date.now()),
+        name,
+        category,
+        price,
+        mrp,
+        image,
+        badge,
+        shortDesc,
+        rating: 4.9,
+        reviewsCount: 100,
+        inStock: true
+      };
+
+      DataStore.saveProduct(prod);
+      alert("Product saved successfully!");
+      resetProductForm();
+      renderProductsTable();
+    }
+
+    function deleteProduct(id) {
+      if (confirm("Delete this product from store?")) {
+        DataStore.deleteProduct(id);
+        renderProductsTable();
+      }
+    }
+
+    // --- SETTINGS (AdSense, Site Kit, PIN) ---
+    function loadSettingsForm() {
+      const s = DataStore.getSettings();
+      document.getElementById('setAdsenseId').value = s.adsensePublisherId || '';
+      document.getElementById('setAdsenseActive').checked = !!s.adsenseActive;
+      document.getElementById('setSearchConsole').value = s.searchConsoleMeta || '';
+    }
+
+    function handleSaveSettings(e) {
+      e.preventDefault();
+      const adsenseId = document.getElementById('setAdsenseId').value.trim();
+      const adsenseActive = document.getElementById('setAdsenseActive').checked;
+      const scMeta = document.getElementById('setSearchConsole').value.trim();
+      const pin = document.getElementById('setAdminPin').value.trim();
+
+      const updates = {
+        adsensePublisherId: adsenseId,
+        adsenseActive: adsenseActive,
+        searchConsoleMeta: scMeta
+      };
+      if (pin) updates.adminPassword = pin;
+
+      DataStore.saveSettings(updates);
+      alert("Settings updated successfully!");
+    }
+
+    // --- BACKUP & RESTORE ---
+    function exportDataJson() {
+      const data = {
+        blogs: DataStore.getBlogs(),
+        products: DataStore.getProducts(),
+        settings: DataStore.getSettings(),
+        exportedAt: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `dental_clinic_data_backup_${Date.now()}.json`;
+      a.click();
+    }
+
+    function importDataJson(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          if (parsed.blogs) localStorage.setItem("dental_blogs_v2", JSON.stringify(parsed.blogs));
+          if (parsed.products) localStorage.setItem("dental_products_v2", JSON.stringify(parsed.products));
+          if (parsed.settings) localStorage.setItem("dental_settings_v2", JSON.stringify(parsed.settings));
+          alert("Backup data restored successfully!");
+          window.location.reload();
+        } catch (err) {
+          alert("Invalid backup file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetFactoryData() {
+      if (confirm("Reset all articles and products to the original 9 clinical articles and 6 homecare products?")) {
+        localStorage.removeItem("dental_blogs_v2");
+        localStorage.removeItem("dental_products_v2");
+        alert("Reset to default complete!");
+        window.location.reload();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>

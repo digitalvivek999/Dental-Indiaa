@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor-Recommended Dental Care Products | Dr. S. Lathasree Dental Clinic</title>
+  <meta name="description" content="Shop authentic, dentist-approved oral homecare products: sonic rechargeable toothbrushes, smart water flossers, remineralizing toothpastes, and aligner care kits.">
+  <link rel="canonical" href="https://drsankendlalathasree.in/shop.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --teal-primary: #0D9488;
+      --teal-dark: #0F766E;
+      --teal-glow: rgba(13, 148, 136, 0.2);
+      --bg-subtle-teal: #F0FDFA;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --bg-soft: #F8FAFC;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.7; color: var(--text-body); background: #FFFFFF; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Top Utility Bar */
+    .utility-header { background: #0F172A; color: #94A3B8; font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid #1E293B; }
+    .utility-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .utility-header a { color: #FFFFFF; text-decoration: none; font-weight: 600; }
+
+    /* Navigation */
+    .site-nav { background: #FFFFFF; border-bottom: 1px solid var(--border-color); padding: 14px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-dark)); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .brand-text-main { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 800; color: var(--text-main); display: block; line-height: 1.2; }
+    .brand-text-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: block; }
+    
+    .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: var(--text-body); font-size: 0.95rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal-primary); }
+    
+    .cart-trigger-btn { background: #F0FDFA; border: 1.5px solid #99F6E4; color: #0F766E; padding: 9px 18px; border-radius: 9999px; font-weight: 800; font-size: 0.92rem; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s; position: relative; }
+    .cart-trigger-btn:hover { background: var(--teal-primary); color: #FFFFFF; border-color: var(--teal-primary); }
+    .cart-count-badge { background: #EF4444; color: #FFFFFF; font-size: 0.75rem; font-weight: 800; padding: 2px 7px; border-radius: 9999px; }
+
+    /* Hero */
+    .shop-hero { padding: 50px 0 35px; background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 100%); text-align: center; }
+    .hero-pill { display: inline-flex; align-items: center; gap: 8px; background: #CCFBF1; color: #0F766E; font-size: 0.82rem; font-weight: 800; padding: 6px 16px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+    .shop-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.7rem; color: var(--text-main); margin-bottom: 14px; line-height: 1.2; }
+    .shop-hero p { font-size: 1.05rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; }
+
+    /* Category Filter */
+    .shop-filter-bar { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 25px 0 10px; }
+    .shop-filter-btn { background: #FFFFFF; border: 1.5px solid var(--border-color); color: var(--text-body); padding: 8px 18px; border-radius: 9999px; font-size: 0.86rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .shop-filter-btn:hover, .shop-filter-btn.active { background: var(--teal-primary); color: #FFFFFF; border-color: var(--teal-primary); }
+
+    /* 3x3 Product Grid */
+    .shop-section { padding: 30px 0 80px; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+    .product-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 35px var(--teal-glow);
+      border-color: var(--teal-primary);
+    }
+    .product-thumb { height: 230px; position: relative; overflow: hidden; background: #F8FAFC; }
+    .product-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .product-card:hover .product-thumb img { transform: scale(1.06); }
+    .product-badge { position: absolute; top: 14px; left: 14px; background: #0F172A; color: #FFFFFF; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 9999px; }
+    .product-rating { position: absolute; bottom: 12px; right: 14px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(6px); color: #D97706; font-size: 0.78rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+
+    .product-body { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-category { font-size: 0.76rem; font-weight: 800; text-transform: uppercase; color: var(--teal-primary); letter-spacing: 0.5px; margin-bottom: 6px; }
+    .product-title { font-size: 1.12rem; font-weight: 800; color: var(--text-main); line-height: 1.35; margin-bottom: 10px; }
+    .product-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 16px; flex-grow: 1; }
+
+    .product-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .price-current { font-size: 1.4rem; font-weight: 800; color: var(--text-main); }
+    .price-mrp { font-size: 0.9rem; color: #94A3B8; text-decoration: line-through; }
+    .price-discount { font-size: 0.78rem; font-weight: 800; color: #16A34A; background: #DCFCE7; padding: 2px 7px; border-radius: 4px; }
+
+    .product-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btn-cart { background: #FFFFFF; border: 1.5px solid var(--teal-primary); color: var(--teal-primary); padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-cart:hover { background: var(--teal-primary); color: #FFFFFF; }
+    .btn-buy-wa { background: #25D366; color: #FFFFFF; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
+    .btn-buy-wa:hover { background: #1EBE5D; transform: translateY(-2px); }
+
+    /* Shopping Cart Drawer */
+    .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 10000; }
+    .cart-drawer { position: fixed; top: 0; right: -420px; width: 400px; max-width: 90vw; height: 100%; background: #FFFFFF; z-index: 10001; box-shadow: -10px 0 35px rgba(0,0,0,0.15); display: flex; flex-direction: column; transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    .cart-drawer.open { right: 0; }
+    .cart-overlay.open { display: block; }
+
+    .cart-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .cart-header h3 { font-size: 1.2rem; color: var(--text-main); font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .cart-close-btn { background: none; border: none; font-size: 1.3rem; color: #64748B; cursor: pointer; padding: 5px; }
+
+    .cart-items-list { flex-grow: 1; overflow-y: auto; padding: 20px; }
+    .cart-empty { text-align: center; padding: 60px 20px; color: #94A3B8; }
+    .cart-empty i { font-size: 3rem; margin-bottom: 14px; color: #CBD5E1; }
+
+    .cart-item { display: flex; gap: 14px; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); align-items: center; }
+    .cart-item-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-color); flex-shrink: 0; }
+    .cart-item-info { flex-grow: 1; }
+    .cart-item-title { font-size: 0.9rem; font-weight: 700; color: var(--text-main); line-height: 1.3; margin-bottom: 4px; }
+    .cart-item-price { font-size: 0.95rem; font-weight: 800; color: var(--teal-primary); }
+    .cart-qty-ctrl { display: inline-flex; align-items: center; gap: 8px; background: #F1F5F9; border-radius: 6px; padding: 2px 6px; margin-top: 6px; }
+    .qty-btn { background: none; border: none; font-weight: 800; cursor: pointer; color: var(--text-main); padding: 0 4px; font-size: 0.9rem; }
+    .cart-item-del { background: none; border: none; color: #EF4444; cursor: pointer; padding: 6px; font-size: 0.9rem; }
+
+    .cart-footer { padding: 20px 24px; border-top: 1px solid var(--border-color); background: #F8FAFC; }
+    .cart-subtotal-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; }
+    .btn-checkout-wa { width: 100%; background: #25D366; color: #FFFFFF; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 1.05rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+    .btn-checkout-wa:hover { background: #1EBE5D; transform: translateY(-2px); }
+    .cart-note { font-size: 0.76rem; color: #64748B; text-align: center; margin-top: 10px; }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding: 45px 0 25px; margin-top: 60px; font-size: 0.9rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid #1E293B; padding-bottom: 25px; }
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { color: #94A3B8; text-decoration: none; }
+    .footer-copy { text-align: center; margin-top: 25px; font-size: 0.8rem; color: #64748B; }
+
+    @media (max-width: 992px) {
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .shop-hero h1 { font-size: 2.2rem; }
+    }
+    @media (max-width: 640px) {
+      .product-grid { grid-template-columns: 1fr; gap: 20px; }
+      .shop-hero h1 { font-size: 1.85rem; }
+      .nav-links { display: none; }
+      .product-actions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="utility-header">
+    <div class="container utility-inner">
+      <div>
+        <i class="fa-solid fa-truck-fast" style="color: var(--teal-primary);"></i> Genuine Clinic Dental Products | In-Clinic Pickup or Fast Home Delivery
+      </div>
+      <div>
+        <a href="tel:+919347594646"><i class="fa-solid fa-phone" style="color: var(--teal-primary);"></i> Orders Helpline: +91 93475 94646</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Nav -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div>
+          <span class="brand-text-main">DR. LATHASREE DENTAL</span>
+          <span class="brand-text-sub">Multispeciality Clinic & Implant Center</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#treatments">Treatments</a></li>
+        <li><a href="blog.html">Blog Articles</a></li>
+        <li><a href="shop.html" class="active">Dental Shop</a></li>
+        <li>
+          <button class="cart-trigger-btn" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+            <span class="cart-count-badge" id="cartCountBadge">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="shop-hero">
+    <div class="container">
+      <div class="hero-pill"><i class="fa-solid fa-shield-heart"></i> 100% Authentic & Medically Approved</div>
+      <h1>Doctor-Recommended Oral Homecare</h1>
+      <p>Maintain your clinical treatment results with hospital-grade homecare kits: electric sonic brushes, cordless water flossers, and remineralizing toothpastes.</p>
+
+      <!-- Category Filter -->
+      <div class="shop-filter-bar">
+        <button class="shop-filter-btn active" onclick="filterShop('All')">All Products</button>
+        <button class="shop-filter-btn" onclick="filterShop('Electric')">Electric & Sonic</button>
+        <button class="shop-filter-btn" onclick="filterShop('Interdental')">Flossers</button>
+        <button class="shop-filter-btn" onclick="filterShop('Daily')">Enamel Pastes</button>
+        <button class="shop-filter-btn" onclick="filterShop('Aligner')">Aligner Care</button>
+        <button class="shop-filter-btn" onclick="filterShop('Cosmetic')">Whitening & Glow</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid Section -->
+  <section class="shop-section">
+    <div class="container">
+      <div class="product-grid" id="productGridContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-in Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-bag-shopping" style="color: var(--teal-primary);"></i> Your Dental Cart</h3>
+      <button class="cart-close-btn" onclick="toggleCart()">&times;</button>
+    </div>
+
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Items dynamically populated -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span>Total Amount:</span>
+        <span id="cartSubtotal">₹0</span>
+      </div>
+      <button onclick="checkoutOnWhatsApp()" class="btn-checkout-wa">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
+        <span>Order on WhatsApp (Instant)</span>
+      </button>
+      <p class="cart-note"><i class="fa-solid fa-shield-check"></i> Orders confirmed directly by Dr. Lathasree's clinic desk.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div style="color: #FFFFFF; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800;">Dr. S. Lathasree Dental Clinic</div>
+          <p style="margin-top: 6px; font-size: 0.85rem; color: #94A3B8;">KU Cross, Hanamkonda, Warangal, Telangana 506009</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="admin.html" style="color: var(--teal-primary); font-weight: 700;"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">
+        © 2026 Dr. S. Lathasree Dental Clinic. Genuine Oral Care Store.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data-store.js"></script>
+  <script>
+    let currentShopCategory = 'All';
+
+    function renderProducts() {
+      const container = document.getElementById('productGridContainer');
+      const products = DataStore.getProducts();
+
+      const filtered = currentShopCategory === 'All'
+        ? products
+        : products.filter(p => p.category.toLowerCase().includes(currentShopCategory.toLowerCase()));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #64748B;">No products in this category.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(prod => {
+        const discount = Math.round(((prod.mrp - prod.price) / prod.mrp) * 100);
+        return `
+          <div class="product-card">
+            <div class="product-thumb">
+              <img src="${prod.image}" alt="${prod.name}" loading="lazy">
+              ${prod.badge ? `<span class="product-badge">${prod.badge}</span>` : ''}
+              <span class="product-rating"><i class="fa-solid fa-star"></i> ${prod.rating} (${prod.reviewsCount || 50})</span>
+            </div>
+            <div class="product-body">
+              <div class="product-category">${prod.category}</div>
+              <h3 class="product-title">${prod.name}</h3>
+              <p class="product-desc">${prod.shortDesc}</p>
+              
+              <div class="product-price-row">
+                <span class="price-current">₹${prod.price.toLocaleString('en-IN')}</span>
+                <span class="price-mrp">₹${prod.mrp.toLocaleString('en-IN')}</span>
+                <span class="price-discount">${discount}% OFF</span>
+              </div>
+
+              <div class="product-actions">
+                <button onclick="handleAddToCart('${prod.id}')" class="btn-cart">
+                  <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+                <a href="https://wa.me/919347594646?text=Hi%20Dr.%20Lathasree,%20I%20want%20to%20buy%20${encodeURIComponent(prod.name)}%20(Price:%20₹${prod.price})" target="_blank" class="btn-buy-wa">
+                  <i class="fa-brands fa-whatsapp"></i> Buy Now
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateCartBadge();
+    }
+
+    function filterShop(cat) {
+      currentShopCategory = cat;
+      document.querySelectorAll('.shop-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(cat) || (cat === 'All' && btn.textContent.includes('All')));
+      });
+      renderProducts();
+    }
+
+    function handleAddToCart(id) {
+      DataStore.addToCart(id);
+      renderCartDrawer();
+      openCart();
+    }
+
+    function toggleCart() {
+      const drawer = document.getElementById('cartDrawer');
+      const overlay = document.getElementById('cartOverlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+      renderCartDrawer();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('open');
+      renderCartDrawer();
+    }
+
+    function renderCartDrawer() {
+      const cart = DataStore.getCart();
+      const list = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      updateCartBadge();
+
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="cart-empty">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Your cart is empty</p>
+            <p style="font-size: 0.85rem;">Add doctor-recommended dental kits to order.</p>
+          </div>
+        `;
+        subtotalEl.textContent = "₹0";
+        return;
+      }
+
+      let total = 0;
+      list.innerHTML = cart.map(item => {
+        total += item.price * item.quantity;
+        return `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-info">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+              <div class="cart-qty-ctrl">
+                <button onclick="DataStore.updateCartQty('${item.id}', -1)" class="qty-btn">-</button>
+                <span style="font-size: 0.85rem; font-weight: 700;">${item.quantity}</span>
+                <button onclick="DataStore.updateCartQty('${item.id}', 1)" class="qty-btn">+</button>
+              </div>
+            </div>
+            <button onclick="DataStore.updateCartQty('${item.id}', -${item.quantity})" class="cart-item-del" title="Remove">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      subtotalEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function updateCartBadge() {
+      const cart = DataStore.getCart();
+      const count = cart.reduce((acc, i) => acc + i.quantity, 0);
+      document.getElementById('cartCountBadge').textContent = count;
+    }
+
+    function checkoutOnWhatsApp() {
+      const cart = DataStore.getCart();
+      if (cart.length === 0) {
+        alert("Your cart is empty! Add products to proceed.");
+        return;
+      }
+
+      let total = 0;
+      let msg = "Hello Dr. S. Lathasree Dental Clinic,\nI would like to order the following homecare products:\n\n";
+      cart.forEach((item, idx) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        msg += `${idx + 1}. ${item.name} (Qty: ${item.quantity}) - ₹${itemTotal.toLocaleString('en-IN')}\n`;
+      });
+      msg += `\n*Total Order Amount: ₹${total.toLocaleString('en-IN')}*\n\nPlease confirm availability and delivery / clinic pickup in Hanamkonda.`;
+
+      const url = `https://wa.me/919347594646?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    window.addEventListener('cart-updated', () => {
+      renderCartDrawer();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+    });
+  </script>
+</body>
+</html>

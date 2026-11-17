@@ -24,6 +24,8 @@ const DEFAULT_CONFIG = {
   whatsappNumber: "919347594646",
   whatsappDefaultMsg: "Hi Dr. Lathasree, I want to book an appointment for dental consultation.",
   email: "care@drlathasreedental.com",
+  instagramUrl: "https://www.instagram.com/dr.sreedentist?xtok=cHQ1Z2V5eXI1NDBr",
+  instagramHandle: "@dr.sreedentist",
   
   // 📍 CLINIC LOCATION & GOOGLE BUSINESS (GMB)
   address: "5-11-532, Sri Sai Nilayam, Road No. 2B, KU Cross",
@@ -47,8 +49,7 @@ const DEFAULT_CONFIG = {
   currencySymbol: "₹",
   rctPrice: "₹2,499",
   alignersPrice: "₹34,999",
-  999/mo",
-  implantsPrice: "₹18,999",
+    implantsPrice: "₹18,999",
   whiteningPrice: "₹4,499",
   veneersPrice: "₹4,999",
   consultationPrice: "₹499"

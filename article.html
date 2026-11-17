@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Dental Article | Dr. S. Lathasree Dental Clinic</title>
+  <meta name="description" id="metaDescription" content="Medically reviewed dental health guide by Dr. S. Lathasree (BDS, MDS) in Hanamkonda.">
+  <link rel="canonical" id="canonicalLink" href="https://drsankendlalathasree.in/article.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --teal-primary: #0D9488;
+      --teal-dark: #0F766E;
+      --teal-glow: rgba(13, 148, 136, 0.2);
+      --bg-subtle-teal: #F0FDFA;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --bg-soft: #F8FAFC;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.8; color: var(--text-body); background: #FFFFFF; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Nav */
+    .site-nav { background: #FFFFFF; border-bottom: 1px solid var(--border-color); padding: 14px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-dark)); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .brand-text-main { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 800; color: var(--text-main); display: block; line-height: 1.2; }
+    .brand-text-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: block; }
+    
+    .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: var(--text-body); font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--teal-primary); }
+    .btn-nav { background: var(--teal-primary); color: #FFFFFF !important; padding: 10px 22px; border-radius: 9999px; }
+
+    /* Breadcrumbs */
+    .breadcrumbs { padding: 18px 0; font-size: 0.86rem; color: var(--text-muted); }
+    .breadcrumbs a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
+    .breadcrumbs a:hover { color: var(--teal-primary); }
+    .breadcrumbs span { color: var(--teal-primary); font-weight: 700; }
+
+    /* Article Layout */
+    .article-layout { display: grid; grid-template-columns: 2.2fr 1fr; gap: 45px; padding: 20px 0 80px; align-items: start; }
+    
+    /* Header */
+    .article-header { margin-bottom: 25px; }
+    .article-category-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-subtle-teal); color: var(--teal-dark); font-size: 0.82rem; font-weight: 800; padding: 5px 14px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; border: 1px solid #CCFBF1; }
+    .article-title { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--text-main); line-height: 1.25; margin-bottom: 18px; }
+    
+    .article-meta-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 18px; margin-bottom: 24px; font-size: 0.88rem; color: var(--text-muted); }
+    .author-badge { display: flex; align-items: center; gap: 10px; }
+    .author-badge img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-primary); }
+    .medically-reviewed { background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; padding: 4px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Featured Image */
+    .featured-image-box { border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 35px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); border: 1px solid var(--border-color); max-height: 440px; }
+    .featured-image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Content Typography (SEO & AdSense Optimized) */
+    .article-body { font-size: 1.05rem; color: var(--text-body); }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-main); margin: 35px 0 15px; border-left: 4px solid var(--teal-primary); padding-left: 14px; }
+    .article-body h3 { font-size: 1.35rem; color: var(--text-main); margin: 26px 0 10px; }
+    .article-body p { margin-bottom: 20px; }
+    .article-body ul, .article-body ol { margin: 0 0 25px 25px; }
+    .article-body li { margin-bottom: 10px; }
+    .article-body strong { color: var(--text-main); }
+    
+    /* Clinical Key Takeaways Box */
+    .key-takeaways { background: #F0FDFA; border: 1.5px solid #99F6E4; border-radius: var(--radius-md); padding: 24px 28px; margin: 30px 0; }
+    .key-takeaways h4 { font-size: 1.15rem; color: #0F766E; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+    /* AdSense In-Article Slot */
+    .adsense-in-article { background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: var(--radius-md); padding: 20px; margin: 35px 0; text-align: center; color: #94A3B8; font-size: 0.8rem; font-weight: 700; }
+
+    /* Share Bar */
+    .share-bar { display: flex; align-items: center; gap: 12px; margin: 35px 0; padding: 18px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .share-btn { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-decoration: none; font-size: 0.95rem; }
+    .share-wa { background: #25D366; }
+    .share-fb { background: #1877F2; }
+    .share-tw { background: #1DA1F2; }
+    .share-copy { background: #64748B; cursor: pointer; border: none; }
+
+    /* Author Bio Box */
+    .author-bio-card { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; margin: 40px 0; display: flex; gap: 20px; align-items: center; }
+    .author-bio-img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal-primary); flex-shrink: 0; }
+    .author-bio-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .author-bio-creds { font-size: 0.85rem; color: var(--teal-primary); font-weight: 700; margin-bottom: 8px; }
+    .author-bio-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 100px; }
+    .sidebar-card { background: #FFFFFF; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 26px; margin-bottom: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); }
+    .sidebar-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 18px; border-bottom: 2px solid var(--bg-subtle-teal); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    
+    .doctor-sidebar-box { text-align: center; }
+    .doctor-sidebar-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--teal-primary); margin: 0 auto 14px; display: block; }
+    .btn-side-book { display: block; background: var(--teal-primary); color: #FFFFFF; text-decoration: none; text-align: center; padding: 13px 20px; border-radius: 9999px; font-weight: 700; margin-top: 14px; font-size: 0.95rem; }
+    .btn-side-wa { display: block; background: #25D366; color: #FFFFFF; text-decoration: none; text-align: center; padding: 12px 20px; border-radius: 9999px; font-weight: 700; margin-top: 10px; font-size: 0.95rem; }
+
+    /* Recent Posts list */
+    .recent-list { list-style: none; }
+    .recent-item { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border-color); }
+    .recent-item:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
+    .recent-link { text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 0.92rem; display: block; line-height: 1.4; transition: color 0.2s; }
+    .recent-link:hover { color: var(--teal-primary); }
+    .recent-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; display: block; }
+
+    /* Footer */
+    .site-footer { background: #0F172A; color: #94A3B8; padding: 45px 0 25px; margin-top: 60px; font-size: 0.9rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid #1E293B; padding-bottom: 25px; }
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { color: #94A3B8; text-decoration: none; }
+    .footer-copy { text-align: center; margin-top: 25px; font-size: 0.8rem; color: #64748B; }
+
+    @media (max-width: 992px) {
+      .article-layout { grid-template-columns: 1fr; gap: 35px; }
+      .article-title { font-size: 2.1rem; }
+      .sidebar { position: static; }
+      .nav-links { display: none; }
+    }
+  </style>
+
+  <!-- Dynamic JSON-LD injection -->
+  <script type="application/ld+json" id="articleSchemaJson"></script>
+</head>
+<body>
+
+  <!-- Site Nav -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div>
+          <span class="brand-text-main">DR. LATHASREE DENTAL</span>
+          <span class="brand-text-sub">Multispeciality Clinic & Implant Center</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#treatments">Treatments</a></li>
+        <li><a href="shop.html">Dental Shop</a></li>
+        <li><a href="blog.html">Blog Articles</a></li>
+        <li><a href="index.html#booking" class="btn-nav">Book OPD Visit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a> &gt; <a href="blog.html">Blog</a> &gt; <span id="breadcrumbTitle">Loading...</span>
+    </div>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+      <!-- Main Content -->
+      <article>
+        <div class="article-header">
+          <span class="article-category-badge" id="artCategory">Dental Guide</span>
+          <h1 class="article-title" id="artTitle">Loading Article...</h1>
+
+          <div class="article-meta-row">
+            <div class="author-badge">
+              <img src="images/doctor.jpg" alt="Dr. S. Lathasree (BDS, MDS)">
+              <div>
+                <strong style="color: var(--text-main); display: block;" id="artAuthor">Dr. S. Lathasree (BDS, MDS)</strong>
+                <span id="artDate">Updated Nov 2026</span> • <span id="artReadTime">5 min read</span>
+              </div>
+            </div>
+            <div class="medically-reviewed">
+              <i class="fa-solid fa-user-doctor"></i> Medically Reviewed
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="featured-image-box">
+          <img id="artFeaturedImg" src="images/bonding.png" alt="Featured Image">
+        </div>
+
+        <!-- In-Article Ad Slot -->
+        <div id="inArticleAdSlot" class="adsense-in-article" style="display: none;">
+          <i class="fa-solid fa-rectangle-ad"></i> Google AdSense In-Article Responsive Ad
+        </div>
+
+        <!-- Article Body -->
+        <div class="article-body" id="artContent">
+          <!-- Dynamic Content -->
+        </div>
+
+        <!-- Clinical Takeaways Box -->
+        <div class="key-takeaways">
+          <h4><i class="fa-solid fa-circle-check"></i> Key Clinical Takeaways</h4>
+          <p>Always seek early intervention when experiencing persistent dental sensitivity or bleeding. Single-sitting treatments and minimally invasive protocols are most effective when caught in the early stages.</p>
+        </div>
+
+        <!-- Share Bar -->
+        <div class="share-bar">
+          <strong style="font-size: 0.9rem; color: var(--text-main);">Share This Guide:</strong>
+          <a href="#" id="shareWa" target="_blank" class="share-btn share-wa" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" id="shareFb" target="_blank" class="share-btn share-fb" title="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" id="shareTw" target="_blank" class="share-btn share-tw" title="Share on Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <button onclick="copyArticleLink()" class="share-btn share-copy" title="Copy Link"><i class="fa-solid fa-link"></i></button>
+        </div>
+
+        <!-- Author Bio Box -->
+        <div class="author-bio-card">
+          <img src="images/doctor.jpg" alt="Dr. S. Lathasree" class="author-bio-img">
+          <div>
+            <div class="author-bio-title">About Dr. S. Lathasree</div>
+            <div class="author-bio-creds">BDS, MDS (Cosmetic Dentistry & Oral Implantology)</div>
+            <p class="author-bio-desc">Dr. S. Lathasree is the Chief Dental Surgeon at Dr. S. Lathasree Dental Clinic, KU Cross, Hanamkonda. With over 5+ years of clinical excellence and 5,000+ completed procedures, she specializes in single-sitting painless root canals, German dental implants, and aesthetic smile transformations.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Doctor Consultation Card -->
+        <div class="sidebar-card doctor-sidebar-box">
+          <img src="images/doctor.jpg" alt="Dr. S. Lathasree" class="doctor-sidebar-img">
+          <h3 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 4px;">Dr. S. Lathasree</h3>
+          <p style="font-size: 0.82rem; color: var(--teal-primary); font-weight: 700;">Chief Dental Surgeon (BDS, MDS)</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 10px 0;">Need expert advice on this treatment? Book a priority clinic slot in Hanamkonda.</p>
+          <a href="index.html#booking" class="btn-side-book"><i class="fa-solid fa-calendar-check"></i> Book OPD Consultation</a>
+          <a href="https://wa.me/919347594646?text=Hi%20Dr.%20Lathasree,%20I%20have%20a%20question%20about%20your%20article." target="_blank" class="btn-side-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Doctor</a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title"><i class="fa-solid fa-newspaper" style="color: var(--teal-primary);"></i> Related Articles</h3>
+          <ul class="recent-list" id="sidebarRecentList">
+            <!-- Dynamic -->
+          </ul>
+        </div>
+
+        <!-- Store Promo Card -->
+        <div class="sidebar-card" style="background: linear-gradient(145deg, #F0FDFA, #CCFBF1); border-color: #99F6E4;">
+          <h3 style="font-size: 1.1rem; color: #0F766E; margin-bottom: 8px;"><i class="fa-solid fa-bag-shopping"></i> Doctor-Recommended Homecare</h3>
+          <p style="font-size: 0.85rem; color: #115E59; margin-bottom: 14px;">Browse authentic sonic toothbrushes, water flossers, and remineralizing toothpastes.</p>
+          <a href="shop.html" style="display: block; background: #0D9488; color: #FFFFFF; text-decoration: none; text-align: center; padding: 10px; border-radius: 9999px; font-weight: 700; font-size: 0.88rem;">Visit Dental Shop &rarr;</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div style="color: #FFFFFF; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800;">Dr. S. Lathasree Dental Clinic</div>
+          <p style="margin-top: 6px; font-size: 0.85rem; color: #94A3B8;">5-11-532, Sri Sai Nilayam, KU Cross, Hanamkonda, Warangal, Telangana 506009</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="admin.html" style="color: var(--teal-primary); font-weight: 700;"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-copy">
+        © 2026 Dr. S. Lathasree Dental Clinic. Medically Reviewed Clinical Guides.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data-store.js"></script>
+  <script>
+    function loadArticle() {
+      const params = new URLSearchParams(window.location.search);
+      const articleId = params.get('id');
+      const blogs = DataStore.getBlogs();
+
+      let blog = blogs.find(b => b.id === articleId || b.slug === articleId);
+      if (!blog && blogs.length > 0) {
+        blog = blogs[0];
+      }
+
+      if (!blog) {
+        document.getElementById('artTitle').textContent = "Article Not Found";
+        return;
+      }
+
+      // Populate Elements
+      document.title = `${blog.title} | Dr. S. Lathasree Dental Clinic`;
+      document.getElementById('pageTitle').textContent = `${blog.title} | Dr. S. Lathasree`;
+      document.getElementById('metaDescription').setAttribute('content', blog.metaDesc || blog.title);
+      document.getElementById('canonicalLink').setAttribute('href', `https://drsankendlalathasree.in/article.html?id=${encodeURIComponent(blog.id)}`);
+
+      document.getElementById('breadcrumbTitle').textContent = blog.title;
+      document.getElementById('artCategory').textContent = blog.category;
+      document.getElementById('artTitle').textContent = blog.title;
+      document.getElementById('artAuthor').textContent = blog.author || "Dr. S. Lathasree (BDS, MDS)";
+      document.getElementById('artDate').textContent = blog.date;
+      document.getElementById('artReadTime').textContent = blog.readTime;
+      document.getElementById('artFeaturedImg').src = blog.image;
+      document.getElementById('artFeaturedImg').alt = blog.title;
+      document.getElementById('artContent').innerHTML = blog.content;
+
+      // Share links
+      const currentUrl = encodeURIComponent(window.location.href);
+      const shareText = encodeURIComponent(`Read this expert dental guide by Dr. S. Lathasree: ${blog.title}`);
+      document.getElementById('shareWa').href = `https://wa.me/?text=${shareText}%20${currentUrl}`;
+      document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+      document.getElementById('shareTw').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${currentUrl}`;
+
+      // Schema.org BlogPosting Injection for RankMath / Google Search Console
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": blog.title,
+        "description": blog.metaDesc,
+        "image": blog.image.startsWith("http") ? blog.image : `https://drsankendlalathasree.in/${blog.image}`,
+        "datePublished": "2026-11-01T08:00:00+05:30",
+        "dateModified": "2026-11-17T12:00:00+05:30",
+        "author": {
+          "@type": "Physician",
+          "name": "Dr. S. Lathasree",
+          "medicalSpecialty": "Dentistry"
+        },
+        "publisher": {
+          "@type": "Dentist",
+          "name": "Dr. S. Lathasree Dental Clinic",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://drsankendlalathasree.in/images/doctor.jpg"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": window.location.href
+        }
+      };
+      document.getElementById('articleSchemaJson').textContent = JSON.stringify(schema);
+
+      // Render Related Articles in Sidebar
+      const related = blogs.filter(b => b.id !== blog.id).slice(0, 4);
+      document.getElementById('sidebarRecentList').innerHTML = related.map(r => `
+        <li class="recent-item">
+          <a href="article.html?id=${encodeURIComponent(r.id)}" class="recent-link">${r.title}</a>
+          <span class="recent-date">${r.date} • ${r.readTime}</span>
+        </li>
+      `).join('');
+
+      // AdSense check
+      const settings = DataStore.getSettings();
+      if (settings.adsenseActive && settings.adsensePublisherId) {
+        const inAd = document.getElementById('inArticleAdSlot');
+        inAd.style.display = 'block';
+        inAd.innerHTML = `<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="${settings.adsensePublisherId}" data-ad-slot="9876543210"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>`;
+      }
+    }
+
+    function copyArticleLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Article link copied to clipboard!");
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadArticle);
+  </script>
+</body>
+</html>
