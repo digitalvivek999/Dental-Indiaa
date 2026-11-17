@@ -1255,6 +1255,132 @@
     }
   </style>
 
+<style>
+    /* Global Container and Viewport Overflow Protection */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      position: relative !important;
+    }
+    * {
+      box-sizing: border-box !important;
+    }
+    .container {
+      width: 100% !important;
+      max-width: 1200px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Form Controls Universal Robustness */
+    .form-group {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .form-control {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      display: block !important;
+    }
+
+    /* Netlify Badge Complete Obliteration */
+    [class*="netlify"],
+    [id*="netlify"],
+    [data-netlify],
+    netlify-badge,
+    netlify-drawer,
+    a[href*="netlify.com"],
+    div:has(> a[href*="netlify.com"]),
+    div:has(> [class*="netlify"]),
+    body > div[style*="fixed"][style*="bottom"],
+    body > a[style*="fixed"][style*="bottom"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      z-index: -999999 !important;
+    }
+
+    /* Mobile Sticky Bar: Highest Priority */
+    .mobile-sticky-bar {
+      z-index: 2147483647 !important;
+    }
+
+    @media (max-width: 768px) {
+      /* GMB Section: 1-Column Mobile Layout (prevents side overflow & circle button distortion) */
+      .gmb-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        width: 100% !important;
+      }
+      .gmb-card {
+        padding: 24px 18px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .gmb-card .btn {
+        width: 100% !important;
+        border-radius: 12px !important;
+        padding: 13px 16px !important;
+        justify-content: center !important;
+        text-align: center !important;
+        font-size: 0.9rem !important;
+        box-sizing: border-box !important;
+      }
+      .gmb-map-wrap {
+        width: 100% !important;
+        height: 280px !important;
+        border-radius: var(--radius-md) !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Booking Form Mobile Overhaul */
+      .booking-card {
+        padding: 24px 18px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        border-radius: 16px !important;
+      }
+      .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-bottom: 20px !important;
+      }
+      .form-control {
+        height: 48px !important;
+        font-size: 16px !important;
+        padding: 12px 14px !important;
+      }
+      .date-slot-row {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      .btn-submit-booking {
+        width: 100% !important;
+        height: 50px !important;
+        font-size: 1.02rem !important;
+        justify-content: center !important;
+      }
+
+      /* Clinic Tour Gallery: Clean 1-Column on Mobile */
+      .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .gallery-item {
+        height: 250px !important;
+      }
+    }
+</style>
 </head>
 <body>
 
@@ -1513,28 +1639,24 @@
           <img src="images/clinic_operatory.jpg" alt="Advanced Operatory Suite Dr S Lathasree Dental Clinic Hanamkonda">
           <div class="gallery-caption" style="padding: 24px 20px 16px; background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%);">
             <div style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">Advanced Operatory Suite</div>
-            <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 500; margin-top: 4px;">Ergonomic dental chair, digital intraoral monitor & surgical LED illumination</div>
           </div>
         </div>
         <div class="gallery-item" style="height: 340px; border-radius: 18px; border: 4px solid #FFFFFF;">
           <img src="images/clinic_reception.jpg" alt="Reception and Patient Waiting Lounge Dr S Lathasree Dental Clinic">
           <div class="gallery-caption" style="padding: 24px 20px 16px; background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%);">
             <div style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">Reception & Waiting Lounge</div>
-            <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 500; margin-top: 4px;">Comfortable patient seating, ambient lighting, and calm consultation area</div>
           </div>
         </div>
         <div class="gallery-item" style="height: 340px; border-radius: 18px; border: 4px solid #FFFFFF;">
           <img src="images/clinic_sterilization.jpg" alt="Class B Vacuum Autoclave 4-Step Sterilization Lab">
           <div class="gallery-caption" style="padding: 24px 20px 16px; background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%);">
             <div style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">Class-B Autoclave Sterilization Lab</div>
-            <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 500; margin-top: 4px;">4-step sterilization, ultrasonic cleaning, and sealed medical instrument pouches</div>
           </div>
         </div>
         <div class="gallery-item" style="height: 340px; border-radius: 18px; border: 4px solid #FFFFFF;">
           <img src="images/clinic_xray_3d.jpg" alt="Digital 3D CBCT and Panoramic X-Ray Imaging Diagnostic Center">
           <div class="gallery-caption" style="padding: 24px 20px 16px; background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%);">
             <div style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">Digital 3D Diagnostic & X-Ray Center</div>
-            <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 500; margin-top: 4px;">Low-radiation CBCT panoramic imaging and digital 3D jawbone simulation</div>
           </div>
         </div>
       </div>
@@ -2212,7 +2334,7 @@
 
             <div class="form-group">
               <label class="form-label" for="ptDate">Preferred Date & Slot *</label>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div class="date-slot-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <input type="date" id="ptDate" class="form-control" required>
                 <select id="ptSlot" class="form-control" required>
                   <option value="Morning (10:00 AM - 1:30 PM)">Morning (10 AM - 1:30 PM)</option>
@@ -2756,5 +2878,25 @@
       if (e.altKey && (e.key === 'g' || e.key === 'G')) openPitchModal();
     });
   </script>
+
+<script>
+  (function() {
+    function purgeNetlifyBadge() {
+      var elements = document.querySelectorAll('[class*="netlify"], [id*="netlify"], [data-netlify], netlify-badge, netlify-drawer, a[href*="netlify.com"]');
+      elements.forEach(function(el) {
+        if (el) el.remove();
+      });
+      var allDivs = document.querySelectorAll('body > div, body > a');
+      allDivs.forEach(function(d) {
+        if (d && d.textContent && d.textContent.indexOf('Powered by Netlify') !== -1) {
+          d.remove();
+        }
+      });
+    }
+    purgeNetlifyBadge();
+    setInterval(purgeNetlifyBadge, 400);
+  })();
+</script>
+
 </body>
 </html>
